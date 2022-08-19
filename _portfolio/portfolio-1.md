@@ -1,10 +1,10 @@
 ---
-# title: "Portfolio item number 1"
-# excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+title: "An entry for the Game Endeavor 5 Jam!"
+excerpt: "[Paddy](https://flamelizard.itch.io) and me decided to join a game jam for fun! <br/><img src='https://img.itch.zone/aW1nLzk2NjY2MjgucG5n/original/v178gk.png'>"
 collection: portfolio
 ---
 
-# An entry for the Game Endeavor 5 Jam!
+# Number Wizard!
 
 ![](https://img.itch.zone/aW1nLzk2NjY2MjgucG5n/original/v178gk.png)
 
