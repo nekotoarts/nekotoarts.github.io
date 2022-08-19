@@ -8,6 +8,8 @@ redirect_from:
   - /about.html
 ---
 
+![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
+
 Hello there!
 
 I'm NekotoArts, an engineering student who loves hobbyist game development.
