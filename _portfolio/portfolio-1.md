@@ -1,3 +1,9 @@
+---
+# title: "Portfolio item number 1"
+# excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+collection: portfolio
+---
+
 # An entry for the Game Endeavor 5 Jam!
 
 ![](https://img.itch.zone/aW1nLzk2NjY2MjgucG5n/original/v178gk.png)
