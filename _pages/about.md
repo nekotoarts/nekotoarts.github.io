@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "NekotoArts is creating shaders!"
+title: ""
 excerpt: "About me"
 author_profile: true
 redirect_from: 
