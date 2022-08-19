@@ -8,6 +8,10 @@ date: 2021-08-03
 # location: "City, Country"
 ---
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1627978882209/mgLz3aIaU.png)
+
+Let's make some fluffy looking 2D pixel art trees in Godot!
+
 ## Assets I will be using
 
 The Tree from this free asset pack on  [itch.io](https://itch.io) 
