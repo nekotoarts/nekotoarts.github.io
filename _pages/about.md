@@ -19,3 +19,5 @@ I've been developing games since 2018 and I absolutely love doing it. Primarily,
 My engine of choice is the [Godot Game Engine](https://godotengine.org)
 
 I love to share whatever knowledge and experience I have, especially on topics that I'm super passionate about such as game shaders and VFX.
+
+You can check out some of my work in my [portfolio](/portfolio/) or read up some of my written [tutorials](/teaching/)
