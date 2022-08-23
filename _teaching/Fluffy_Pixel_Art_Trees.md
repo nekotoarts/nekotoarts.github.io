@@ -2,7 +2,7 @@
 title: "Fluffy 2D Pixel Art Trees!"
 collection: teaching
 excerpt: "Learn how to make Fluffy looking 2D Pixel Art Trees in Godot. I'll walk you through all the shader code! <br/><img src='https://cdn.hashnode.com/res/hashnode/image/upload/v1627978882209/mgLz3aIaU.png'>"
-# type: "Shader Tutorial"
+type: "Shader Tutorial"
 permalink: /teaching/fluffy-2d-pixel-art-trees
 date: 2021-08-03
 ---
