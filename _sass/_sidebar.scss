@@ -89,8 +89,17 @@
     @include breakpoint($large) {
       padding: 5px;
       border: 1px solid $border-color;
+      animation: profileCircleAnim 5s infinite;
+      animation-timing-function: ease-in-out;
+      animation-direction: alternate;
     }
   }
+}
+
+@keyframes profileCircleAnim {
+  0% {border: 1px solid $border-color;}
+  50% {border: 2px solid $border-color;}
+  100% {border: 1px solid $border-color;}
 }
 
 .author__content {
