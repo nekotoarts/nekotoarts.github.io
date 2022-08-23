@@ -4,6 +4,7 @@ collection: teaching
 excerpt: "The depth buffer's values seem really weird when you sample it like a regular texture. How do you even get the linear depth value that you're looking for? <br/><img src='/images/DepthTextureArticle/depth_buffer.png'>"
 permalink: /teaching/how-to-read-depth-buffer
 date: 2022-08-23
+type: Shader Tutorial
 ---
 
 ![](/images/DepthTextureArticle/depth_buffer.png)
