@@ -1,10 +1,12 @@
 ---
 title: "How do I lookup the depth texture?"
 collection: teaching
-excerpt: "The depth buffer's values seem really weird when you sample it like a regular texture. How do you even get the linear depth value that you're looking for? <br/><img src='https://cdn.hashnode.com/res/hashnode/image/upload/v1627978882209/mgLz3aIaU.png'>"
+excerpt: "The depth buffer's values seem really weird when you sample it like a regular texture. How do you even get the linear depth value that you're looking for? <br/><img src='/images/DepthTextureArticle/depth_buffer.png'>"
 permalink: /teaching/how-to-read-depth-buffer
 date: 2022-08-23
 ---
+
+![](/images/DepthTextureArticle/depth_buffer.png)
 
 Here's a short tutorial on reading the `DEPTH_TEXTURE` in Godot! I remember this being one of the most confusing things to understand when beginning to write shaders, so, I decided to make a small written breakdown here.
 
@@ -26,12 +28,17 @@ Notice the `.r` that allows us to take just the red channel of the depth texture
 
 This depth value is totally unusable for most situations however, because this isn't the linear depth of the scene. Instead, its currently on a logarithmic scale, and we need to transform first.
 
+![](/images/DepthTextureArticle/raw_depth_texture.png)
+_Raw depth texture value when we read it_
+
+![](/images/DepthTextureArticle/depth_raised_to_50.png)
+_Raising the power of this depth to 50 shows some details_ `pow(depth, 50.0)`
+
 This occurs because the vertices of the mesh are transformed into clip-space using the `PROJECTION_MATRIX` which makes the "z" value non-linear. Of course, to counteract this, we need to just multiply it by the `INV_PROJECTION_MATRIX` so we can head back into view-space.
 
 If you're new to shaders, take a look at the different vertex transformation stages below:
 
 ![](/images/DepthTextureArticle/coordinate_systems.png)
-
 _Figure 1. Vertex Transformation Stages (Vries, 2014)._
 
 We currently have a clip-space value for the depth texture, so we want to get back to view space by undoing the projection transformation.
