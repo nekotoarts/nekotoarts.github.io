@@ -38,7 +38,7 @@ This occurs because the vertices of the mesh are transformed into clip-space usi
 
 If you're new to shaders, take a look at the different vertex transformation stages below:
 
-![](/images/DepthTextureArticle/coordinate_systems.png)
+![](/images/DepthTextureArticle/coordinate_systems_dark.png)
 _Figure 1. Vertex Transformation Stages (Vries, 2014)._
 
 We currently have a clip-space value for the depth texture, so we want to get back to view space by undoing the projection transformation.
