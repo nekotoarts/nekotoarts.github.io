@@ -265,8 +265,6 @@ Final Product
 
 ## My Links
 
-Find my games on  [itch.io](https://nekotoarts.itch.io) 
+Find my games on  [itch.io](https://nekotoarts.itch.io)
 
-Find my work on  [GitHub](https://github.com/nekotogd) 
-
-
+Find my work on  [GitHub](https://github.com/nekotogd)
