@@ -48,8 +48,7 @@ layout: default
             <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}
           </strong>
           <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}
-          </time>, <i class="fa fa-fw fa-file-text" aria-hidden="true"></i>
-          <strong>Type: </strong> {{ page.type }}
+          </time>, <i class="fa fa-file-text" aria-hidden="true"></i><strong>Type: </strong> {{ page.type }}
         </p>
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
