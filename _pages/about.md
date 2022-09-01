@@ -18,6 +18,8 @@ redirect_from:
 }
 .banner_paint_layer {
     position: relative;
+    animation: banner_back 2s ease-in-out;
+    animation-iteration-count: infinite;
 }
 .banner_text_layer {
     position: absolute;
@@ -35,6 +37,17 @@ transform: translateX(100%);
 }
 100% {
 transform: translateX(0);
+}
+}
+@keyframes banner_back {
+0% {
+transform: translateX(-5px);
+}
+50% {
+transform: translateX(5px);
+}
+100% {
+transform: translateX(-5px);
 }
 }
 </style>
