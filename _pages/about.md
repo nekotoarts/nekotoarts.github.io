@@ -15,6 +15,9 @@ redirect_from:
 .slide_image {
     animation: slideInFromRight 1s ease-out;
 }
+.banner {
+    position: absolute;
+}
 @keyframes slideInFromRight {
 0% {
 transform: translateX(100%);
@@ -24,7 +27,11 @@ transform: translateX(0);
 }
 }
 </style>
-<img class="slide_image" src="/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png">
+<div class="slide_image">
+<img class="banner_paint_layer banner" src="/images/Webpage_Banner_Stack/Pain_Splat_layer.png">
+<img class="banner_text_layer banner" src="/images/Webpage_Banner_Stack/Text_layer.png">
+<img class="banner_nekoto_layer banner" src="/images/Webpage_Banner_Stack/Nekoto_layer.png">
+</div>
 </div>
 
 <div class="typewriter-basic">
@@ -55,7 +62,7 @@ transform: translateX(0);
                 "a Technical Artist",
                 "making VFX",
                 "in love with shaders",
-                "a hobbyist Game developer",
+                "a hobbyist Game Developer",
                 "an Engineering student",
                 "a Youtuber, sometimes...",
                 "drowning in shader code",
