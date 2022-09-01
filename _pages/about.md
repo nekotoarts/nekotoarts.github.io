@@ -13,7 +13,11 @@ redirect_from:
 <div>
 <style scoped>
 .slide_image {
-    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     animation: slideInFromRight 1s ease-out;
 }
 .banner {
