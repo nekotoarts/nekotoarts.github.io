@@ -13,6 +13,7 @@ redirect_from:
 <div>
 <style scoped>
 .slide_image {
+    position: relative;
     animation: slideInFromRight 1s ease-out;
 }
 .banner {
@@ -28,9 +29,9 @@ transform: translateX(0);
 }
 </style>
 <div class="slide_image">
-<img class="banner_paint_layer banner" src="/images/Webpage_Banner_Stack/Pain_Splat_layer.png">
-<img class="banner_text_layer banner" src="/images/Webpage_Banner_Stack/Text_layer.png">
-<img class="banner_nekoto_layer banner" src="/images/Webpage_Banner_Stack/Nekoto_layer.png">
+<img class="banner_paint_layer banner" src="/images/Webpage_Banner_Stack/Pain_Splat_layer.png" />
+<img class="banner_text_layer banner" src="/images/Webpage_Banner_Stack/Text_layer.png" />
+<img class="banner_nekoto_layer banner" src="/images/Webpage_Banner_Stack/Nekoto_layer.png" />
 </div>
 </div>
 
