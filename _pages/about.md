@@ -54,10 +54,6 @@ redirect_from:
 
 </div>
 
-Hello there!
-
-I'm NekotoArts, an engineering student who loves hobbyist game development.
-
 I absolutely love game development; I've been working on games since around 2018. Primarily, I work on VFX and shaders on my [YouTube](https://www.youtube.com/c/NekotoArts) channel.
 
 My engine of choice is the [Godot Game Engine](https://godotengine.org), but I have also used Unreal Engine and Unity for some time in the past. Check out [this video](https://www.youtube.com/watch?v=ILcP0TeF7fU) if you're interested in why I use Godot.
