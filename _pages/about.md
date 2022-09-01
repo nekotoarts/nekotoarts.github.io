@@ -13,15 +13,21 @@ redirect_from:
 <div>
 <style scoped>
 .slide_image {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+    position: relative;
     animation: slideInFromRight 1s ease-out;
 }
-.banner {
+.banner_paint_layer {
+    position: relative;
+}
+.banner_text_layer {
     position: absolute;
+    top: 0;
+    left: 0;
+}
+.banner_nekoto_layer {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 @keyframes slideInFromRight {
 0% {
