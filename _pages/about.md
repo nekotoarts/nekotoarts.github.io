@@ -12,6 +12,23 @@ redirect_from:
 
 ![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
 
+<div>
+<style scoped>
+.slide_image {
+    animation: slideInFromRight 1s ease-in;
+}
+@keyframes slideInFromRight {
+0% {
+transform: translateX(100%);
+}
+100% {
+transform: translateX(0);
+}
+}
+</style>
+<img class="slide_image" src="/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png">
+</div>
+
 <div class="typewriter-basic">
 <style scoped>
 .container {
