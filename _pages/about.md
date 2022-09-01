@@ -20,7 +20,7 @@ redirect_from:
     justify-content: center;
 }
 .container h1 {
-    font-size: 80px;
+    font-size: 30px;
     font-weight: 600;
     text-align: center;
 }
@@ -29,7 +29,7 @@ redirect_from:
 }
 </style>
     <div class="container">
-        <h1>I'm <span class="auto-type"></span></h1>
+        <h1>Hi there! I'm <span class="auto-type"></span></h1>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
@@ -42,6 +42,7 @@ redirect_from:
                 "an Engineering student",
                 "a Youtuber, sometimes...",
                 "drowning in shader code",
+                "making tutorials",
             ],
             typeSpeed: 100,
             backSpeed: 60,
