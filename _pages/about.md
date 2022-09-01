@@ -8,25 +8,26 @@ redirect_from:
     - /about.html
 ---
 
+![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
+
 <div class="typewriter-basic">
-    <style scoped>
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container h1 {
-            font-size: 80px;
-            font-weight: 600;
-        }
-
-        .auto-type {
-            color: #e94560;
-        }
-    </style>
+<style scoped>
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.container h1 {
+    font-size: 80px;
+    font-weight: 600;
+}
+.auto-type {
+    color: #e94560;
+}
+</style>
     <div class="container">
         <h1>I'm <span class="auto-type"></span></h1>
     </div>
@@ -49,8 +50,6 @@ redirect_from:
     </script>
 
 </div>
-
-![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
 
 Hello there!
 
