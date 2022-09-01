@@ -10,12 +10,10 @@ redirect_from:
 
 <link rel="stylesheet" href="main_page_custom.css">
 
-![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
-
 <div>
 <style scoped>
 .slide_image {
-    animation: slideInFromRight 1s ease-in;
+    animation: slideInFromRight 1s ease-out;
 }
 @keyframes slideInFromRight {
 0% {
