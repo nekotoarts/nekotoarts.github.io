@@ -8,6 +8,8 @@ redirect_from:
     - /about.html
 ---
 
+<link rel="stylesheet" href="main_page_custom.css">
+
 ![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
 
 <div class="typewriter-basic">
