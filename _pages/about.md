@@ -30,6 +30,8 @@ redirect_from:
     position: absolute;
     top: 0;
     left: 0;
+    animation: banner_front 2s ease-in-out;
+    animation-iteration-count: infinite;
 }
 @keyframes slideInFromRight {
 0% {
@@ -48,6 +50,17 @@ transform: translateX(5px);
 }
 100% {
 transform: translateX(-5px);
+}
+}
+@keyframes banner_front {
+0% {
+transform: translateX(5px);
+}
+50% {
+transform: translateX(-5px);
+}
+100% {
+transform: translateX(5px);
 }
 }
 </style>
