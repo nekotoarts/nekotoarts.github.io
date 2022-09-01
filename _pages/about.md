@@ -13,8 +13,6 @@ redirect_from:
         .container {
             width: 100%;
             height: 100vh;
-            background: #2b323c;
-            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
