@@ -20,9 +20,9 @@ The purpose of this project is **not** to modify and redistribute a fan-game of 
 
 Almost all assets and code from the project are my own work with the exceptions of:
 
-- Music
-- SFX
-- Weapon Models
+-   Music
+-   SFX
+-   Weapon Models
 
 ## Devlogs
 
@@ -33,4 +33,5 @@ These videos document my side of the development process for "Bean of the Wild"
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8X3_zWn68Xk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## References
-Stim, R. (2021, November 25). _What Is Fair Use?_. Stanford Copyright and Fair Use Center. https://fairuse.stanford.edu/overview/fair-use/what-is-fair-use/
+
+Stim, R. (2021, November 25). _What Is Fair Use?_. Stanford Copyright and Fair Use Center. [https://fairuse.stanford.edu/overview/fair-use/what-is-fair-use/](https://fairuse.stanford.edu/overview/fair-use/what-is-fair-use/)

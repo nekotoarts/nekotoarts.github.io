@@ -8,18 +8,18 @@ Right now, I'm using it to host a little portfolio of mine and some written tuto
 
 Here's a few pointers if you're forking Academic Pages or this website for your own use.
 
-- All the CSS for the website is located under [_sass](/_sass/)
-  - Global variables such as font sizes and colors are located in [_variables.scss](/_sass/_variables.scss)
-  - Syntax highlighting CSS is [here](/_sass/_syntax.scss)
-- To turn your site into dark mode:
-  - Copy the [skins folder](_sass/skins/) into your project
-    - Make sure you place it under the [_sass](_sass/) folder **in your project**
-  - Copy **only the colors** from [_variables.scss](/_sass/_variables.scss)
-  - Edit the colors in the page footer, found in [_footer.scss](/_sass/_footer.scss)
-- To import and use fonts from Google Fonts:
-  - Pick your fonts on the [Google Fonts](https://fonts.google.com) website
-  - Take the generated `<link>` tags and place them anywhere in the [custom header file](/_includes/head/custom.html)
-  - Edit the [_variables.scss](/_sass/_variables.scss) file or whatever CSS file you need to choose the right font using `font-family`
+-   All the CSS for the website is located under [\_sass](/_sass/)
+    -   Global variables such as font sizes and colors are located in [\_variables.scss](/_sass/_variables.scss)
+    -   Syntax highlighting CSS is [here](/_sass/_syntax.scss)
+-   To turn your site into dark mode:
+    -   Copy the [skins folder](_sass/skins/) into your project
+        -   Make sure you place it under the [\_sass](_sass/) folder **in your project**
+    -   Copy **only the colors** from [\_variables.scss](/_sass/_variables.scss)
+    -   Edit the colors in the page footer, found in [\_footer.scss](/_sass/_footer.scss)
+-   To import and use fonts from Google Fonts:
+    -   Pick your fonts on the [Google Fonts](https://fonts.google.com) website
+    -   Take the generated `<link>` tags and place them anywhere in the [custom header file](/_includes/head/custom.html)
+    -   Edit the [\_variables.scss](/_sass/_variables.scss) file or whatever CSS file you need to choose the right font using `font-family`
 
 # Find me here
 

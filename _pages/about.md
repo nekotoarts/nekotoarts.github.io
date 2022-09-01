@@ -3,10 +3,31 @@ permalink: /
 title: ""
 excerpt: "About me"
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+redirect_from:
+    - /about/
+    - /about.html
 ---
+
+<div class="container">
+            <h1>I'm <span class="auto-type"></span></h1>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script>
+            var typed = new Typed(".auto-type", {
+                strings: [
+                    "a Technical Artist",
+                    "making VFX",
+                    "in love with shaders",
+                    "a hobbyist Game developer",
+                    "an Engineering student",
+                    "a Youtuber, sometimes...",
+                    "drowning in shader code",
+                ],
+                typeSpeed: 100,
+                backSpeed: 60,
+                loop: true,
+            });
+        </script>
 
 ![](/images/NekotoBranding/NekotoArts_YouTube_banner_draft5_cropped_transparent.png)
 
