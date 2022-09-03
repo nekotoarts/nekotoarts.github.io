@@ -12,7 +12,7 @@ redirect_from:
 
 <div>
 <style scoped>
-.slide_image {
+.banner_container {
     position: relative;
     animation: slideInFromRight 1s ease-out;
 }
@@ -41,6 +41,17 @@ transform: translateX(100%);
 transform: translateX(0);
 }
 }
+@keyframes wipe-in-left {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+[transition-style="in:wipe:left"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-left both;
+}
 @keyframes banner_back {
 0% {
 transform: translateX(-5px);
@@ -64,7 +75,7 @@ transform: translateX(5px);
 }
 }
 </style>
-<div class="slide_image">
+<div class="banner_container" transition-style="in:wipe:left">
 <img class="banner_paint_layer banner" src="/images/Webpage_Banner_Stack/Pain_Splat_layer.png" />
 <img class="banner_text_layer banner" src="/images/Webpage_Banner_Stack/Text_layer.png" />
 <img class="banner_nekoto_layer banner" src="/images/Webpage_Banner_Stack/Nekoto_layer.png" />
