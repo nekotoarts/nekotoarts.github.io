@@ -132,10 +132,6 @@ I love to share whatever knowledge and experience I have, especially on topics t
 
 You can check out some of my work in my [portfolio](/portfolio/) or read up some of my written [tutorials](/teaching/).
 
-## Support Me
-
-<iframe id='kofiframe' src='https://ko-fi.com/nekoto/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='nekoto'></iframe>
-
 ## Socials
 
 <p align="center">
@@ -145,4 +141,10 @@ You can check out some of my work in my [portfolio](/portfolio/) or read up some
 <a href="https://godotshaders.com/author/nekotoarts/" target="blank"><img src="https://img.shields.io/badge/Godot_Shaders-%23FFFFFF.svg?style=for-the-badge&logo=godot-engine" /></a>
 <a href="https://reddit.com/user/XDGregory" target="blank"><img src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" /></a>
 <a href="https://discord.gg/eX5Qygqve6" target="blank"><img src="https://img.shields.io/badge/NekotoArts_Server-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" /></a>
+</p>
+
+### Support Me
+
+<p align="center">
+<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Nekoto on Ko-fi', '#e02850', 'B0B3DMHCU');kofiwidget2.draw();</script>
 </p>
