@@ -13,9 +13,9 @@ Let's make some fluffy looking 2D pixel art trees in Godot!
 
 ## Assets I will be using
 
-The Tree from this free asset pack on  [itch.io](https://itch.io) 
+The Tree from this free asset pack on [itch.io](https://itch.io)
 
- [Pixel Art Top-Down Basic by Cainos](https://cainos.itch.io/pixel-art-top-down-basic) 
+[Pixel Art Top-Down Basic by Cainos](https://cainos.itch.io/pixel-art-top-down-basic)
 
 ## My Pixel Art is already good, do I need to do this?
 
@@ -31,8 +31,8 @@ Real Trees have leaves that wave around as the wind blows and also shed leaves s
 
 We're going to make 2 main changes:
 
-- Waving Leaves
-- Flying Leaves
+-   Waving Leaves
+-   Flying Leaves
 
 Very simple, very juicy, and very much alive!
 
@@ -80,8 +80,9 @@ shader_type canvas_item;
 To make our leaves wave, we need to make sure that each pixel of the shader has a pseudo-random distortion, so you know what that means - its time for some noise textures!
 
 Define 3 textures:
-- Our leaves albedo texture
-- 2 noise textures
+
+-   Our leaves albedo texture
+-   2 noise textures
 
 ```glsl
 uniform sampler2D albedo_texture : hint_albedo;
@@ -109,7 +110,7 @@ Create the `fragment` function:
 
 ```glsl
 void fragment(){
-    
+
 }
 ```
 
@@ -192,7 +193,6 @@ What it should look like now:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pmMnoRTdGCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 ## Flying Leaves
 
 Open up your Pixel Art program and make a very small leaf sprite. Make sure that the leaf's color is plain white `#FFFFFF`
@@ -265,6 +265,6 @@ Final Product
 
 ## My Links
 
-Find my games on  [itch.io](https://nekotoarts.itch.io)
+Find my games on [itch.io](https://nekotoarts.itch.io)
 
-Find my work on  [GitHub](https://github.com/nekotogd)
+Find my work on [GitHub](https://github.com/nekotogd)

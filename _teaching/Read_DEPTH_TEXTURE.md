@@ -73,4 +73,5 @@ depth = -view.z;
 ```
 
 ## References
+
 Vries, J. D. (2014, June). _Coordinate Systems_. LearnOpenGL. Retrieved August 23, 2022, from [https://learnopengl.com/Getting-started/Coordinate-Systems](learnopengl.com/Getting-started/Coordinate-Systems)
