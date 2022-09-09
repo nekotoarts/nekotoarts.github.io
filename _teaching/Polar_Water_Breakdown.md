@@ -127,8 +127,11 @@ float cd = distance(UV, vec2(0.5));
 Now let's use the `smoothstep()` function to control our edge. Here's a quick review of `smoothstep()` if you're new to shaders:
 
 > The `smoothstep()` function is an extension of the `step()` function in GLSL. It takes three parameters: `smoothstep(edge0, edge1, value)`.
+>
 > It returns `0.0` if $\text{edge}_0\le\text{value}$
+>
 > Or returns `1.0` if $\text{edge}_1\ge\text{value}$
+>
 > Otherwise, it interpolates (non-linearly) between `0.0` and `1.0` if $\text{edge}_0<\text{value}<\text{edge}_1$
 
 Using this, we can create an edge fade using the following formula.
@@ -247,4 +250,5 @@ Thanks to a very useful tweet from [QbieShay](https://twitter.com/qbieshay), I f
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Finally fixed that stupid line bug I was experiencing.<br>Thanks so much <a href="https://twitter.com/qbieshay?ref_src=twsrc%5Etfw">@qbieshay</a> !<a href="https://twitter.com/hashtag/GodotEngine?src=hash&amp;ref_src=twsrc%5Etfw">#GodotEngine</a> <a href="https://twitter.com/hashtag/Godot?src=hash&amp;ref_src=twsrc%5Etfw">#Godot</a> <a href="https://twitter.com/hashtag/VFX?src=hash&amp;ref_src=twsrc%5Etfw">#VFX</a> <a href="https://twitter.com/hashtag/water?src=hash&amp;ref_src=twsrc%5Etfw">#water</a> <a href="https://t.co/bPVSXRzqBP">https://t.co/bPVSXRzqBP</a> <a href="https://t.co/NfiD32PI5w">pic.twitter.com/NfiD32PI5w</a></p>&mdash; NekotoArts (@NekotoArts) <a href="https://twitter.com/NekotoArts/status/1567876282544693251?ref_src=twsrc%5Etfw">September 8, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Simply re-import the caustics texture with mipmaps disabled to get rid of those weird lines:
+
 ![](/images/Polar_Water/Reimport_Caustics_Texture.png)
