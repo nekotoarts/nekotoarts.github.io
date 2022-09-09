@@ -15,6 +15,7 @@ We need a base texture that we can use for water caustics. We could also procedu
 
 Here's a **CC0** water caustics texture I made that you can use to try out this effect:
 ![](/images/Polar_Water/foam_mask.png)
+
 _This is **not** the same texture I used in the tweet, it one that I made for this article_
 The license for this texture is **CC0**, feel free to use it for whatever you need.
 
@@ -67,7 +68,7 @@ Instead of sampling our texture using regular UV coordinates, instead we will tr
 >
 > Polar coordinates, instead, denote the position of something by using two values: the distance along a line, and the angle at which the line is rotated, mathematically expressed as $(r, \theta)$. For example, $(10, 0.3)$ in polar coordinates denotes 10 units along a line that has been rotated 0.3 radians from the "x-axis".
 
-In effect, using polar coordinates gives us very circular looking textures. Here's the function that does that:
+In effect, using polar coordinates gives us very circular looking textures. Here's the function that does that (Godot Shaders, 2021):
 
 ```glsl
 vec2 polar_coordinates(vec2 uv, vec2 center, float zoom, float repeat)
@@ -252,3 +253,7 @@ Thanks to a very useful tweet from [QbieShay](https://twitter.com/qbieshay), I f
 Simply re-import the caustics texture with mipmaps disabled to get rid of those weird lines:
 
 ![](/images/Polar_Water/Reimport_Caustics_Texture.png)
+
+## References
+
+Godot Shaders. (2021, May 4). \_Polar Coordinates\_. [https://godotshaders.com/snippet/polar-coordinates/](https://godotshaders.com/snippet/polar-coordinates/)
