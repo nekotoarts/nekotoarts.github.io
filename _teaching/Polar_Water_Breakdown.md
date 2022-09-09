@@ -118,7 +118,7 @@ What's the reason from subtracting `distort_strength / 2.0`? We do this because 
 
 Cool! Now let's fix our second issue of fading towards the edge. To do this, we need to create a mask that's `1.0` in the center and `0.0` near the edge. We can develop this mask using the distance to the center of the plane, and the `smoothstep()` function.
 
-First, let's get the distance to the center of the plane. Note in mind that `vec2(0.5)` is a shorthand for `vec2(0.5, 0.5)` in GLSL.
+First, let's get the distance to the center of the plane. Note that `vec2(0.5)` is a shorthand for `vec2(0.5, 0.5)` in GLSL.
 
 ```glsl
 // Fade out caustics
@@ -179,7 +179,7 @@ float movement = starting_radius + TIME * disc_speed;
 float disc = smoothstep(cd, cd + 0.01, loop);
 ```
 
-Notice that `smoothstep(cd, cd + 0.01, loop)`? Its the same formula from earlier; `smoothstep(size, size + blend, value)`!
+Notice that `smoothstep(cd, cd + 0.01, loop)`? Its the same formula from earlier; `smoothstep(size, size + blend, value)`! The `0.01` is a small blending amount to smooth the edges of our circle. Otherwise, we'll end up with some really ugly aliased edges.
 
 This is not enough though. The disc keeps expanding outwards to infinity. We need it to loop at a certain radius.
 
@@ -188,7 +188,7 @@ Here's a little shader trick. The `fract()` function returns the fractional part
 -   `fract(1.345)` returns `0.345`
 -   `fract(214523.2465)` returns `0.2465`
 
-Therefore, we can use the `fract(TIME)` to get a value such that: $0\le\text{fract}(\text{TIME})<1$. Which will keep looping our radius between `0.0` and `1.0`. However, our UV space has a diameter of `1.0`, so the maximum radius we can reach is `1.0 / 2.0 = 0.5`.
+Therefore, we can use `fract(TIME)` to get a value such that: $0\le\text{fract}(\text{TIME})<1$. Which will keep looping our radius between `0.0` and `1.0`.
 
 Let's construct an updated, looping disc:
 
@@ -200,7 +200,7 @@ float disc = smoothstep(cd, cd + 0.01, loop);
 
 We need the disc to fade near the edges though, which is something we've already dealt with earlier in this shader! The only difference is how we calculate the distance to the center.
 
-Recall that the radius of a circle, is actually the distance from the circumference of the circle to its center! To get a fading value, we'll take the distance between the current radius and the maximum radius using `abs(loop - radius)`, and we'll make the fade a little more intense by raising it to a power of `5`:
+Recall that the radius of a circle, is actually the distance from the circumference of the circle to its center! To get a fading value, we'll take the distance between the current radius and the maximum radius using `abs(loop - radius)`, and we'll make the fade a little more intense by raising it to a power of 5:
 
 ```glsl
 float radius_disc = 0.8;
