@@ -256,4 +256,4 @@ Simply re-import the caustics texture with mipmaps disabled to get rid of those 
 
 ## References
 
-Godot Shaders. (2021, May 4). \_Polar Coordinates\_. [https://godotshaders.com/snippet/polar-coordinates/](https://godotshaders.com/snippet/polar-coordinates/)
+Godot Shaders. (2021, May 4). _Polar Coordinates_. [https://godotshaders.com/snippet/polar-coordinates/](https://godotshaders.com/snippet/polar-coordinates/)
