@@ -46,6 +46,10 @@ We currently have a clip-space value for the depth texture, so we want to get ba
 
 Right now, the `depth` value that we have is between `0` and `1`, but completely non-linear. Also, don't forget that we're working in clip-space, so we have to construct NDC (normalized device coordinates) that runs from `-1` to `1`:
 
+> Note for Godot 4 users: Clip-space normalized device coordinates (NDC) used to run from $-1$ to $1$ on OpenGL, however, Vulkan has changed the NDC standard to run from $0$ to $1$ instead.
+>
+> Since Godot 4 primarily uses the Vulkan backend, your NDCs will actually lie between $0$ and $1$.
+
 ```glsl
 vec3 screen_coords = vec3(SCREEN_UV, depth) // Still between 0 and 1;
 vec3 ndc = screen_coords * 2.0 - 1.0 // Now between -1 and 1;
