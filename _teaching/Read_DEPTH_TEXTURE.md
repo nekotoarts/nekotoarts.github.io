@@ -46,9 +46,9 @@ We currently have a clip-space value for the depth texture, so we want to get ba
 
 Right now, the `depth` value that we have is between `0` and `1`, but completely non-linear. Also, don't forget that we're working in clip-space, so we have to construct NDC (normalized device coordinates) that runs from `-1` to `1`:
 
-> Note for Godot 4 users: Clip-space normalized device coordinates (NDC) used to run from $-1$ to $1$ on OpenGL, however, Vulkan has changed the NDC standard to run from $0$ to $1$ instead.
+> Note for Godot 4 users: Clip-space normalized device coordinates (NDC) used to run from $[-1,1]$ on all axes in OpenGL (Vries, 2014), however, Vulkan handles NDCs a little differently.
 >
-> Since Godot 4 primarily uses the Vulkan backend, your NDCs will actually lie between $0$ and $1$.
+> The $x$ and $y$ axes still run from $[-1, 1]$ but the $z$ axis runs from $[0,1]$ (Wellings, 2016).
 
 ```glsl
 vec3 screen_coords = vec3(SCREEN_UV, depth) // Still between 0 and 1;
@@ -77,5 +77,7 @@ depth = -view.z;
 ```
 
 ## References
+
+Wellings, M. (2016, March 20). The New Vulkan Coordinate System. Retrieved September 10, 2022, from [https://matthewwellings.com/blog/the-new-vulkan-coordinate-system/](https://matthewwellings.com/blog/the-new-vulkan-coordinate-system/)
 
 Vries, J. D. (2014, June). _Coordinate Systems_. LearnOpenGL. Retrieved August 23, 2022, from [https://learnopengl.com/Getting-started/Coordinate-Systems](learnopengl.com/Getting-started/Coordinate-Systems)
