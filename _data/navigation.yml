@@ -1,13 +1,16 @@
 # main links links
 main:
-  - title: "Tutorials"
-    url: /teaching/    
-    
-  - title: "Portfolio"
-    url: /portfolio/
-        
-  # - title: "Blog Posts"
-  #   url: /year-archive/
-    
-  # - title: "Guide"
-  #   url: /markdown/
+    - title: "Tutorials"
+      url: /teaching/
+
+    - title: "Portfolio"
+      url: /portfolio/
+
+    - title: "Citation Info"
+      url: /citation/
+
+    # - title: "Blog Posts"
+    #   url: /year-archive/
+
+    # - title: "Guide"
+    #   url: /markdown/
