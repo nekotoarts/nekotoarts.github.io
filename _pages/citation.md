@@ -1,11 +1,7 @@
 ---
 permalink: /citation/
 title: ""
-excerpt: "Citation and Referencing Information for articles"
 author_profile: true
-redirect_from:
-    - /citation/
-    - /citation.html
 ---
 
 # Citing or Referencing this website
