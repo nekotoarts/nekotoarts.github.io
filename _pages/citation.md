@@ -1,5 +1,5 @@
 ---
-permalink: /
+permalink: /citation/
 title: ""
 excerpt: "Citation and Referencing Information for articles"
 author_profile: true
