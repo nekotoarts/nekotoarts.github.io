@@ -1,10 +1,9 @@
 ---
+layout: archive
+title: "Citing or Referencing this website"
 permalink: /citation/
-title: ""
 author_profile: true
 ---
-
-# Citing or Referencing this website
 
 ## Licensing Information
 
