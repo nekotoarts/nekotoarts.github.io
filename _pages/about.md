@@ -76,9 +76,9 @@ transform: translateX(5px);
 }
 </style>
 <div class="banner_container" transition-style="in:wipe:left">
-<img class="banner_paint_layer banner" src="/images/Webpage_Banner_Stack/Pain_Splat_layer.png" />
-<img class="banner_text_layer banner" src="/images/Webpage_Banner_Stack/Text_layer.png" />
-<img class="banner_nekoto_layer banner" src="/images/Webpage_Banner_Stack/Nekoto_layer.png" />
+<img class="banner_paint_layer banner" src="/images/Webpage_Banner_Stack/Pain_Splat_layer_draft2.png" />
+<img class="banner_text_layer banner" src="/images/Webpage_Banner_Stack/Text_layer_draft2.png" />
+<img class="banner_nekoto_layer banner" src="/images/Webpage_Banner_Stack/Nekoto_layer_draft2.png" />
 </div>
 </div>
 
