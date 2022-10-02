@@ -399,20 +399,26 @@
 
 /* Copy to clipboard CSS */
 pre.highlight > button {
-	color: #4af626;
+	color: #cccccc;
 	position: absolute;
 	right: 1.2rem;
 	top: 1.2rem;
+	width: 24px;
+	height: 24px;
 	opacity: 0;
 }
 
 pre.highlight:hover > button {
-	background: rgba(0, 0, 0, 0.7);
+	background: url("https://img.icons8.com/plumpy/24/228BE6/clipboard-approve.png");
+	width: 24px;
+	height: 24px;
 	opacity: 1;
 }
 
 pre.highlight > button:active,
 pre.highlight > button:focus {
-	background: rgba(0, 0, 0, 0.7);
+	background: url("https://img.icons8.com/plumpy/24/228BE6/clipboard-approve.png");
+	width: 24px;
+	height: 24px;
 	opacity: 1;
 }
