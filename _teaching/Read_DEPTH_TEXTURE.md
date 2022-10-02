@@ -7,6 +7,8 @@ date: 2022-08-23
 type: Shader Tutorial
 ---
 
+<script src="/assets/js/copyCode.js"></script>
+
 ![](/images/DepthTextureArticle/depth_buffer.png)
 
 Here's a short tutorial on reading the `DEPTH_TEXTURE` in Godot! I remember this being one of the most confusing things to understand when beginning to write shaders, so, I decided to make a small written breakdown here.
@@ -49,6 +51,8 @@ Right now, the `depth` value that we have is between `0` and `1`, but completely
 > Note for Godot 4 users: Clip-space normalized device coordinates (NDC) used to run from $[-1,1]$ on all axes in OpenGL (Vries, 2014), however, Vulkan handles NDCs a little differently.
 >
 > The $x$ and $y$ axes still run from $[-1, 1]$ but the $z$ axis runs from $[0,1]$ (Wellings, 2016).
+
+{% include codeHeader.html %}
 
 ```glsl
 vec3 screen_coords = vec3(SCREEN_UV, depth) // Still between 0 and 1;
