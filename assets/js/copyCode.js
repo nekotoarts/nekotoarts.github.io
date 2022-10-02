@@ -1,23 +1,24 @@
+// assets/js/post.js
 var codeBlocks = document.querySelectorAll("pre.highlight");
 
 codeBlocks.forEach(function (codeBlock) {
-	var Button = document.createElement("button");
-	Button.className = " ";
-	Button.type = "button";
-	Button.ariaLabel = "Copy code to clipboard";
-	Button.innerText = "Copy";
+	var copyButton = document.createElement("button");
+	copyButton.className = "copy";
+	copyButton.type = "button";
+	copyButton.ariaLabel = "Copy code to clipboard";
+	copyButton.innerText = "Copy";
 
-	codeBlock.append(Button);
+	codeBlock.append(copyButton);
 
-	Button.addEventListener("click", function () {
+	copyButton.addEventListener("click", function () {
 		var code = codeBlock.querySelector("code").innerText.trim();
 		window.navigator.clipboard.writeText(code);
 
-		Button.innerText = "Copied";
+		copyButton.innerText = "Copied";
 		var fourSeconds = 4000;
 
 		setTimeout(function () {
-			Button.innerText = "Copy";
+			copyButton.innerText = "Copy";
 		}, fourSeconds);
 	});
 });
