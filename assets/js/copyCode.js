@@ -1,6 +1,7 @@
 // This assumes that you're using Rouge; if not, update the selector
 const codeBlocks = document.querySelectorAll(
-	".code-header + .highlighter-rouge"
+	// ".code-header + .highlighter-rouge"
+	".code-header"
 );
 const copyCodeButtons = document.querySelectorAll(".copy-code-button");
 
