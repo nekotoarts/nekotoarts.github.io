@@ -7,8 +7,6 @@ date: 2022-08-23
 type: Shader Tutorial
 ---
 
-<script src="/assets/js/copyCode.js"></script>
-
 ![](/images/DepthTextureArticle/depth_buffer.png)
 
 Here's a short tutorial on reading the `DEPTH_TEXTURE` in Godot! I remember this being one of the most confusing things to understand when beginning to write shaders, so, I decided to make a small written breakdown here.
