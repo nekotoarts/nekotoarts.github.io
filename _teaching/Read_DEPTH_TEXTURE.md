@@ -50,8 +50,6 @@ Right now, the `depth` value that we have is between `0` and `1`, but completely
 >
 > The $x$ and $y$ axes still run from $[-1, 1]$ but the $z$ axis runs from $[0,1]$ (Wellings, 2016).
 
-{% include codeHeader.html %}
-
 ```glsl
 vec3 screen_coords = vec3(SCREEN_UV, depth) // Still between 0 and 1;
 vec3 ndc = screen_coords * 2.0 - 1.0 // Now between -1 and 1;
