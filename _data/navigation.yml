@@ -6,8 +6,8 @@ main:
     - title: "Portfolio"
       url: /portfolio/
 
-    - title: "Citation Info"
-      url: /citation/
+    - title: "Citing and Licensing"
+      url: /citation-and-licensing/
 
     # - title: "Blog Posts"
     #   url: /year-archive/
