@@ -413,7 +413,7 @@ pre.highlight > button {
 }
 
 pre.highlight:hover > button {
-	background: url("https://img.icons8.com/material-rounded/24/FA5252/clipboard.png");
+	background: url("/images/dark_clipboard_24px.png");
 	width: 27px;
 	height: 27px;
 	opacity: 1;
@@ -421,17 +421,9 @@ pre.highlight:hover > button {
 	transition: all 0.5s;
 }
 
-pre.highlight > button:active {
-	background: url("https://img.icons8.com/material-rounded/24/FA5252/clipboard.png");
-	width: 27px;
-	height: 27px;
-	opacity: 0.7;
-	filter: grayscale(0%);
-	transition: all 0.2s;
-}
-
+pre.highlight > button:active,
 pre.highlight > button:focus {
-	background: url("https://img.icons8.com/material-rounded/24/FA5252/clipboard.png");
+	background: url("/images/checked_clipboard_24px.png");
 	width: 27px;
 	height: 27px;
 	opacity: 0.7;
