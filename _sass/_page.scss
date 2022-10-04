@@ -408,6 +408,7 @@ pre.highlight > button {
 	width: 27px;
 	height: 27px;
 	opacity: 0;
+	filter: grayscale(100%);
 	overflow: hidden; // Hides overflowing content, which is the text in this case
 }
 

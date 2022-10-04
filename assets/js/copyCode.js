@@ -15,10 +15,10 @@ codeBlocks.forEach(function (codeBlock) {
 		window.navigator.clipboard.writeText(code);
 
 		copyButton.innerText = "Copied";
-		var fourSeconds = 4000;
+		var timeoutSeconds = 2;
 
 		setTimeout(function () {
 			copyButton.innerText = "Copy";
-		}, fourSeconds);
+		}, timeoutSeconds * 1000);
 	});
 });
