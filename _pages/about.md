@@ -93,7 +93,7 @@ transform: translateX(5px);
 }
 .container h1 {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 750;
     text-align: center;
 }
 .auto-type {
