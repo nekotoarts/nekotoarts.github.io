@@ -1,6 +1,6 @@
 ---
 title: "Bean of the Wild!"
-excerpt: "A 2-year personal exercise of trying to recreate the game mechanics and VFX of Breath of the Wild in Godot <br/><img src='https://img.youtube.com/vi/8X3_zWn68Xk/hqdefault.jpg'>"
+excerpt: "A 2-year personal exercise of trying to recreate the game mechanics and VFX of Breath of the Wild in Godot <br/><img src='/images/BeanOfTheWild_Portfolio/thumbnail_draft4.jpg'>"
 collection: portfolio
 permalink: /portfolio/bean-of-the-wild
 ---
