@@ -144,9 +144,6 @@ body {
 	padding: 0;
 	padding-bottom: 9em;
 	color: #eaeaea;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	line-height: 1.5;
 }
 body.overflow--hidden {
@@ -160,9 +157,6 @@ h5,
 h6 {
 	margin: 2em 0 0.5em;
 	line-height: 1.2;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-weight: bold;
 }
 h1 {
@@ -243,9 +237,6 @@ tt,
 code,
 kbd,
 samp,
-pre {
-	font-family: "JetBrains Mono", Monaco, Consolas, "Lucida Console", monospace;
-}
 pre {
 	overflow-x: auto;
 }
@@ -334,7 +325,6 @@ figure.third figcaption {
 figcaption {
 	margin-bottom: 0.5em;
 	color: #efefef;
-	font-family: Georgia, Times, serif;
 	font-size: 0.75em;
 }
 figcaption a {
@@ -439,9 +429,6 @@ body:hover .visually-hidden button {
 	position: fixed;
 	z-index: 20;
 	margin: 0;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	white-space: nowrap;
 }
 .skip-link li {
@@ -755,9 +742,6 @@ a.reversefootnote:hover {
 table {
 	margin-bottom: 1em;
 	width: 100%;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 	border-collapse: collapse;
 	border: 1px solid #bdc1c4;
@@ -791,9 +775,6 @@ th {
 	margin-bottom: 0.25em;
 	padding: 0.5em 1em;
 	color: #fff !important;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 	font-weight: bold;
 	text-align: center;
@@ -902,9 +883,6 @@ th {
 .notice {
 	margin: 2em 0 !important;
 	padding: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em !important;
 	text-indent: initial;
 	background-color: #f8f9f9;
@@ -941,9 +919,6 @@ th {
 .notice--primary {
 	margin: 2em 0 !important;
 	padding: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em !important;
 	text-indent: initial;
 	background-color: #f9fbfd;
@@ -980,9 +955,6 @@ th {
 .notice--info {
 	margin: 2em 0 !important;
 	padding: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em !important;
 	text-indent: initial;
 	background-color: #eef7fa;
@@ -1019,9 +991,6 @@ th {
 .notice--warning {
 	margin: 2em 0 !important;
 	padding: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em !important;
 	text-indent: initial;
 	background-color: #fef4e6;
@@ -1058,9 +1027,6 @@ th {
 .notice--success {
 	margin: 2em 0 !important;
 	padding: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em !important;
 	text-indent: initial;
 	background-color: #eff9ef;
@@ -1097,9 +1063,6 @@ th {
 .notice--danger {
 	margin: 2em 0 !important;
 	padding: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em !important;
 	text-indent: initial;
 	background-color: #fdefef;
@@ -1148,9 +1111,6 @@ th {
 	margin-right: auto;
 	clear: both;
 	padding: 1em 1em 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 }
 .masthead__inner-wrap:after {
 	content: " ";
@@ -1197,9 +1157,6 @@ th {
 	margin-bottom: 0;
 	padding-left: 2em;
 	padding-right: 2em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	-webkit-animation: intro 0.3s both;
 	animation: intro 0.3s both;
 	-webkit-animation-delay: 0.3s;
@@ -1268,9 +1225,6 @@ th {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 }
 .pagination li {
 	display: block;
@@ -1280,9 +1234,6 @@ th {
 .pagination li a {
 	margin-bottom: 0.25em;
 	padding: 0.5em 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 1.5;
@@ -1320,9 +1271,6 @@ th {
 	padding: 1em 2em;
 	float: left;
 	width: 50%;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 1em;
 	font-weight: bold;
 	text-align: center;
@@ -1501,9 +1449,6 @@ th {
 .nav__title {
 	margin: 0;
 	padding: 0.5rem 1rem;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 1em;
 	font-weight: bold;
 }
@@ -1511,18 +1456,12 @@ th {
 	display: block;
 	margin: 0.5rem 0;
 	padding: 0.5rem 0;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 	font-weight: bold;
 	text-transform: uppercase;
 	border-bottom: 1px solid #51555d;
 }
 .toc {
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	color: #7a8288;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -1629,9 +1568,6 @@ th {
 	color: #9ba1a6;
 }
 .page__footer-copyright {
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.6875em;
 }
 .page__footer-follow ul {
@@ -1643,9 +1579,6 @@ th {
 	display: inline-block;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 	text-transform: uppercase;
 }
@@ -1673,7 +1606,6 @@ figure.highlight {
 div.highlighter-rouge .highlight,
 figure.highlight .highlight {
 	margin: 0;
-	font-family: "JetBrains Mono", Monaco, Consolas, "Lucida Console", monospace;
 	font-size: 0.85em;
 	line-height: 1.8;
 }
@@ -1932,9 +1864,6 @@ button,
 select,
 textarea {
 	box-sizing: border-box;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 }
 label {
 	display: block;
@@ -2250,9 +2179,6 @@ select:focus {
 	margin-top: -0.5em;
 }
 .page__lead {
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 1.25em;
 }
 .page__content h2 {
@@ -2278,16 +2204,10 @@ select:focus {
 }
 .page__content dt {
 	margin-top: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-weight: bold;
 }
 .page__content dd {
 	margin-left: 1em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 }
 .page__content .small {
@@ -2369,7 +2289,6 @@ select:focus {
 	margin: 0 auto;
 	padding: 2px 5px;
 	color: #fff;
-	font-family: Georgia, Times, serif;
 	font-size: 0.6875em;
 	background: #000;
 	text-align: right;
@@ -2413,9 +2332,6 @@ select:focus {
 .comment__date {
 	margin-top: 2em;
 	color: #9ba1a6;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 }
 .page__meta p,
@@ -2603,9 +2519,6 @@ select:focus {
 }
 .archive__item-title {
 	margin-bottom: 0.25em;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 }
 .archive__item-title a + a {
 	opacity: 0.5;
@@ -2876,9 +2789,6 @@ select:focus {
 .sidebar h5,
 .sidebar h6 {
 	margin-bottom: 0;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 }
 .sidebar h3,
 .sidebar h4 {
@@ -2886,9 +2796,6 @@ select:focus {
 }
 .sidebar p,
 .sidebar li {
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 0.75em;
 	line-height: 1.5;
 }
@@ -2973,9 +2880,6 @@ select:focus {
 	}
 }
 .sidebar .author__name {
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	font-size: 1em;
 }
 .author__bio {
@@ -2991,9 +2895,6 @@ select:focus {
 	position: relative;
 	display: table-cell;
 	vertical-align: middle;
-	font-family: "Karla", -apple-system, ".SFNSText-Regular", "San Francisco",
-		"Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial,
-		sans-serif;
 	z-index: 10;
 	position: relative;
 	cursor: pointer;
@@ -7091,9 +6992,6 @@ select:focus {
 .fab {
 	font-family: "Font Awesome 5 Brands";
 }
-.mfp-counter {
-	font-family: Georgia, Times, serif;
-}
 .mfp-bg {
 	top: 0;
 	left: 0;
@@ -7238,7 +7136,6 @@ button::-moz-focus-inner {
 	color: #fff;
 	font-style: normal;
 	font-size: 28px;
-	font-family: Georgia, Times, serif;
 }
 .mfp-close:hover,
 .mfp-close:focus {

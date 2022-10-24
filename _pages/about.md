@@ -93,6 +93,7 @@ transform: translateX(5px);
 }
 .container h1 {
     font-size: 30px;
+    font-family: "JetBrains Mono";
     font-weight: 750;
     text-align: center;
 }
