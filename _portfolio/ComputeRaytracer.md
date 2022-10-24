@@ -20,7 +20,7 @@ Through some exploring and trying to figure out how compute shaders were integra
 
 I prefer solidifying my learning experiences by trying to make a personal project using whatever I have learnt. So, after researching some of the uses for compute shaders for a while, I landed on the excellent raytracing series by Kuri (2018), which used compute shaders in Unity to create its raytracer!
 
-![](http://three-eyed-games.com/wp-content/uploads/2018/04/gpi-rt-teaser-sqr.png)
+![](/images/ComputeRaytracing/gpi-rt-teaser-sqr.png)
 
 _Figure 1. Raytraced Spheres by Kuri (2018)_
 
@@ -29,6 +29,10 @@ I thought this would be a fun project to try and recreate, and so I got to work 
 Finally, I documented my experiences and shared what I had learnt by creating a tutorial for compute shaders in Godot 4. You can watch the video here:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ueUMr92GQJc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Source Code
+
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nekotogd/Raytracing_Godot4)
 
 ## References and Resources Used
 
