@@ -142,4 +142,5 @@ You can check out some of my work in my [portfolio](/portfolio/) or read up some
 <a href="https://godotshaders.com/author/nekotoarts/" target="blank"><img src="https://img.shields.io/badge/Godot_Shaders-%23FFFFFF.svg?style=for-the-badge&logo=godot-engine" /></a>
 <a href="https://reddit.com/user/XDGregory" target="blank"><img src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" /></a>
 <a href="https://discord.gg/eX5Qygqve6" target="blank"><img src="https://img.shields.io/badge/NekotoArts_Server-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" /></a>
+<a rel="me" href="https://mastodon.gamedev.place/@nekoto"><img src="https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white" /></a>
 </p>
