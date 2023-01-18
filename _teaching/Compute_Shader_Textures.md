@@ -9,7 +9,7 @@ date: 2023-01-18
 
 ![](/images/ComputeShaderTextures/thumbnail_draft1.png)
 
-Godot 4 is now racing towards its stable release, and I've been playing around with the new compute shader system it involves now. However, there isn't quite enough documentation surrounding them yet, and most sources are only covering how to use storage buffers.
+Godot 4 is now racing towards its stable release, and I've been playing around with the new compute shader system it includes now. However, there isn't quite enough documentation surrounding them yet, and most sources are only covering how to use storage buffers.
 
 I made a video covering an [Introduction to Compute Shaders](/portfolio/compute-shader-raytracer) but avoided talking about textures because I was still getting used to using them, and beta 1 had even less information surrounding them than we have right now.
 
@@ -94,7 +94,7 @@ Define the input texture similar to how we declare storage buffers:
 layout(set = 0, binding = 0) uniform sampler2D INPUT_TEXTURE;
 ```
 
-Then just sample the texture the same way you would as in a fragment shader. You can calculate UV coordinates by doing `uv = texel_position / texture_resolution`. Also you can find the resolution of a `sampler2D` using `textureSize(TEXTURE)`, or find the resolution of an `image2D` using `imageSize(IMAGE).`
+Then just sample the texture the same way you would as in a fragment shader. You can calculate UV coordinates by doing `uv = texel_position / texture_resolution`. Also you can find the resolution of a `sampler2D` using `textureSize(TEXTURE)`, or find the resolution of an `image2D` using `imageSize(IMAGE)`.
 
 ```glsl
 vec4 color = texture(INPUT_TEXTURE, UV);
@@ -186,3 +186,7 @@ rd.texture_update(old_frame_tex, 0, rd.texture_get_data(output_tex, 0))
 ```
 
 Keep in mind that this **only works if both textures have the same dimensions**. You cannot copy data from one texture into another unless they have the same dimensions. Uploaded data must always match the resolution that was declared in the texture format when creating the texture object.
+
+Now you know how to create textures, write to them in a compute shader, sample them in a compute shader, read back the data in GDScript, and also update or copy them in GDScript.
+
+I hope this helped anyone who's trying to fiddle around with compute shaders!
