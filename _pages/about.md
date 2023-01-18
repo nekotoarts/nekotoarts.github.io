@@ -8,7 +8,9 @@ redirect_from:
     - /about.html
 ---
 
-<link rel="stylesheet" href="main_page_custom.css">
+<!-- <link rel="stylesheet" href="main_page_custom.css"> -->
+
+<link rel="stylesheet" href="about_custom.css">
 
 <div>
 <style scoped>

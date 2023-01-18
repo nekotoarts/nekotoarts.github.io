@@ -63,11 +63,11 @@ $text-color                 : $dark-gray;
 $border-color               : $lighter-gray;
 */
 
-$body-color: #252a34;
-$background-color: #252a34;
+$body-color: #0f0e0e;
+$background-color: #0f0e0e;
 $code-background-color: mix(#000, $background-color, 15%);
 $code-background-color-dark: mix(#000, $background-color, 20%);
-$text-color: #eaeaea;
+$text-color: #bdbdbd;
 $border-color: mix(#fff, $background-color, 20%);
 
 $primary-color: #c1d2eb;
@@ -155,7 +155,7 @@ $susy: (
 	//   color: blue,
 	//   output: overlay,
 	//   toggle: top right,
-	// ),,,,
+	// ),,,,,,,
 );
 
 /*
