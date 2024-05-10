@@ -9,6 +9,9 @@ main:
     - title: "Citing and Licensing"
       url: /citation-and-licensing/
 
+    - title: "Snippets"
+      url: /code_samples/
+
     # - title: "Blog Posts"
     #   url: /year-archive/
 
