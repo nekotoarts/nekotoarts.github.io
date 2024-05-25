@@ -1,0 +1,724 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Fluffy 2D Pixel Art Trees! - NekotoArts</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="NekotoArts">
+<meta property="og:title" content="Fluffy 2D Pixel Art Trees!">
+
+
+  <link rel="canonical" href="https://nekotoarts.github.io/teaching/fluffy-2d-pixel-art-trees">
+  <meta property="og:url" content="https://nekotoarts.github.io/teaching/fluffy-2d-pixel-art-trees">
+
+
+
+  <meta property="og:description" content="Learn how to make Fluffy looking 2D Pixel Art Trees in Godot. I’ll walk you through all the shader code! ">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2021-08-03T00:00:00-07:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://nekotoarts.github.io",
+      "logo": "https://nekotoarts.github.io/images/images/favicon_data/android-icon-192x192.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "NekotoArts",
+      "url" : "https://nekotoarts.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://nekotoarts.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="NekotoArts Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link
+	rel="apple-touch-icon"
+	sizes="57x57"
+	href="/images/favicon_data/apple-icon-57x57.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="60x60"
+	href="/images/favicon_data/apple-icon-60x60.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="72x72"
+	href="/images/favicon_data/apple-icon-72x72.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="76x76"
+	href="/images/favicon_data/apple-icon-76x76.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="114x114"
+	href="/images/favicon_data/apple-icon-114x114.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="120x120"
+	href="/images/favicon_data/apple-icon-120x120.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="144x144"
+	href="/images/favicon_data/apple-icon-144x144.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="152x152"
+	href="/images/favicon_data/apple-icon-152x152.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="180x180"
+	href="/images/favicon_data/apple-icon-180x180.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="192x192"
+	href="/images/favicon_data/android-icon-192x192.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="32x32"
+	href="/images/favicon_data/favicon-32x32.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="96x96"
+	href="/images/favicon_data/favicon-96x96.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="16x16"
+	href="/images/favicon_data/favicon-16x16.png"
+/>
+<link rel="manifest" href="/images/favicon_data/manifest.json" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta
+	name="msapplication-TileImage"
+	content="/images/favicon_data/ms-icon-144x144.png"
+/>
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/academicons.css" />
+
+<!-- Import Google Fonts -->
+<!-- Currently has OpenSans, JetBrains Mono, Didact Gothic, Khula, Karla -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Khula:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+	rel="stylesheet"
+/>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+	    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	    processEscapes: true
+	  }
+	});
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"
+	async
+></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://nekotoarts.github.io/">NekotoArts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/teaching/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/portfolio/">Portfolio</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/citation-and-licensing/">Citing and Licensing</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/code_samples/">Snippets</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+   
+
+<div itemscope itemtype="http://schema.org/Person">
+    <div class="author__avatar">
+         <img src="https://nekotoarts.github.io/images/NekotoBranding/NekotoArts logo upscaled alternative.png" class="author__avatar" alt="Nekoto"> 
+    </div>
+
+    <div class="author__content">
+        <h3 class="author__name">Nekoto</h3>
+        
+        <p class="author__bio">Technical Artist who loves sharing ideas. Really loves BotW.</p>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+            <li>
+                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Bad Shader Code, GLSL
+            </li>
+               
+            <li>
+                <a href="mailto:nekoto.business@gmail.com"
+                    ><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a
+                >
+            </li>
+               
+            <li>
+                <a href="https://twitter.com/nekotoarts"
+                    ><i
+                        class="fab fa-fw fa-twitter-square"
+                        aria-hidden="true"
+                    ></i>
+                    Twitter</a
+                >
+            </li>
+                    
+            <li>
+                <a href="https://github.com/nekotogd"
+                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i>
+                    Github</a
+                >
+            </li>
+                   
+            <li>
+                <a href="https://www.youtube.com/c/NekotoArts"
+                    ><i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+                    YouTube</a
+                >
+            </li>
+                      
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Fluffy 2D Pixel Art Trees!">
+    <meta itemprop="description" content="Learn how to make Fluffy looking 2D Pixel Art Trees in Godot. I’ll walk you through all the shader code! ">
+    <meta itemprop="datePublished" content="August 03, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Fluffy 2D Pixel Art Trees!
+</h1>
+          
+        
+        
+        <!-- 
+          <p> Shader Tutorial, <i></i>, 2021 </p>
+         -->
+        
+        
+        <p class="page__date">
+          <strong>
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:
+          </strong>
+          <time datetime="2021-08-03T00:00:00-07:00">August 03, 2021
+          </time>,<i class="fa fa-filter"></i><strong> Type: </strong> Shader Tutorial
+        </p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627978882209/mgLz3aIaU.png" alt="" /></p>
+
+<p>Let’s make some fluffy looking 2D pixel art trees in Godot!</p>
+
+<h2 id="assets-i-will-be-using">Assets I will be using</h2>
+
+<p>The Tree from this free asset pack on <a href="https://itch.io">itch.io</a></p>
+
+<p><a href="https://cainos.itch.io/pixel-art-top-down-basic">Pixel Art Top-Down Basic by Cainos</a></p>
+
+<h2 id="my-pixel-art-is-already-good-do-i-need-to-do-this">My Pixel Art is already good, do I need to do this?</h2>
+
+<p>Not necessarily, but it will put a lot of life into your tree when placed in the game world.</p>
+
+<p>For most RPGs, trees make up a lot of their map since they’re such basic vegetation for the world. Due to this, player see trees quite often.</p>
+
+<p>Static Trees may look good but are no fun, all you can really do is bump into them but they don’t feel alive at all!</p>
+
+<p>Real Trees have leaves that wave around as the wind blows and also shed leaves sometimes.</p>
+
+<h2 id="how-do-we-juice-our-trees">How do we juice our Trees?</h2>
+
+<p>We’re going to make 2 main changes:</p>
+
+<ul>
+  <li>Waving Leaves</li>
+  <li>Flying Leaves</li>
+</ul>
+
+<p>Very simple, very juicy, and very much alive!</p>
+
+<h3 id="one-small-initial-step">One small initial step</h3>
+
+<p>We need to head back to our pixel art program, I will be using Aseprite but you can use whatever you like.</p>
+
+<p>Open up your Tree and separate the Leaves and the Bark into separate layers like so:</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627973859014/Y4clxM2k2.png" alt="image.png" />
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627973872632/g_7lPl_RX.png" alt="image.png" /></p>
+
+<p>Now export them as separate images: <code class="language-plaintext highlighter-rouge">bark.png</code> and <code class="language-plaintext highlighter-rouge">leaves.png</code></p>
+
+<p>The names of the file are not important, just that they are separate files</p>
+
+<h2 id="waving-leaves">Waving Leaves</h2>
+
+<p>In Godot, create a <code class="language-plaintext highlighter-rouge">StaticBody2D</code> for our Tree, and 2 sprites - the Bark and the Leaves</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627974388277/_CK_tmtGS.png" alt="image.png" /></p>
+
+<p>Position that Bark, such that its origin point is at the bottom of the Bark:</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627974458740/hszdY2532.png" alt="image.png" /></p>
+
+<p>Now bring in the Leaves and align it with the tree</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627974495066/dbZBBQAnX.png" alt="image.png" /></p>
+
+<p>On the Leaves Sprite, go to the <code class="language-plaintext highlighter-rouge">Materials</code> section in the Inspector and create a new <code class="language-plaintext highlighter-rouge">ShaderMaterial</code></p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627974576642/xga7DlCbW.png" alt="image.png" /></p>
+
+<p>Open up the <code class="language-plaintext highlighter-rouge">ShaderMaterial</code> and create a new <code class="language-plaintext highlighter-rouge">Shader</code></p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627974623810/FgDiveFar.png" alt="image.png" /></p>
+
+<p>Now we’re ready to make our leaves wave! Let’s start by defining our shader to be a 2D shader</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shader_type</span> <span class="n">canvas_item</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>To make our leaves wave, we need to make sure that each pixel of the shader has a pseudo-random distortion, so you know what that means - its time for some noise textures!</p>
+
+<p>Define 3 textures:</p>
+
+<ul>
+  <li>Our leaves albedo texture</li>
+  <li>2 noise textures</li>
+</ul>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">albedo_texture</span> <span class="o">:</span> <span class="n">hint_albedo</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">noise_texture</span> <span class="o">:</span> <span class="n">hint_albedo</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">noise_texture2</span> <span class="o">:</span> <span class="n">hint_albedo</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>We’re using 2 noise textures for increased variation in our waving effect.</p>
+
+<p>Now for the parameters that control our waves:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">float</span> <span class="n">distortion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mo">05</span><span class="mi">8</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">offset</span> <span class="o">=</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">time_scale</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">distortion</code> will control the strength of the waves
+<code class="language-plaintext highlighter-rouge">offset</code> is used to re-align the texture after the UV offset has been added by the distortion
+<code class="language-plaintext highlighter-rouge">time_scale</code> controls how fast the waves are</p>
+
+<p>Now lets make all of it actually work.</p>
+
+<p>Create the <code class="language-plaintext highlighter-rouge">fragment</code> function:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">fragment</span><span class="p">(){</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Inside the fragment function, lets get the color of our 2 noise textures. This can be done using the <code class="language-plaintext highlighter-rouge">texture</code> function which performs a texture lookup at the specified UV coordinate. The current UV is already given to us as a variable we can use, so we simply write:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec3</span> <span class="n">noise_color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise_texture</span><span class="p">,</span> <span class="n">UV</span><span class="p">).</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">distortion</span><span class="p">;</span>
+<span class="kt">vec3</span> <span class="n">noise_color2</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise_texture2</span><span class="p">,</span> <span class="n">UV</span><span class="p">).</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">distortion</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>We multiply them with <code class="language-plaintext highlighter-rouge">distortion</code> in order to control their strength.</p>
+
+<p>However, we want the noise to move, according to our <code class="language-plaintext highlighter-rouge">time_scale</code> uniform. To do this, we use the built-in <code class="language-plaintext highlighter-rouge">TIME</code> variable and multiply it with our <code class="language-plaintext highlighter-rouge">time_scale</code> uniform, then we add this to our UV.</p>
+
+<p>But then both of our noise textures would move in the same way, and there would be effectively no variation between the textures. To combat this, we will move the second noise texture only vertically.</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec3</span> <span class="n">noise_color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise_texture</span><span class="p">,</span> <span class="n">UV</span> <span class="o">+</span> <span class="n">TIME</span> <span class="o">*</span> <span class="n">time_scale</span><span class="p">).</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">distortion</span><span class="p">;</span>
+<span class="kt">vec3</span> <span class="n">noise_color2</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise_texture2</span><span class="p">,</span> <span class="kt">vec2</span><span class="p">(</span><span class="n">UV</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">UV</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">TIME</span> <span class="o">*</span> <span class="n">time_scale</span><span class="p">)).</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">distortion</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Now let’s take the average of both these noise textures when overlayed on top of each other:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec3</span> <span class="n">combined_noise</span> <span class="o">=</span> <span class="n">noise_color</span> <span class="o">+</span> <span class="n">noise_color2</span><span class="p">;</span>
+<span class="n">combined_noise</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Finally, we use our combined noise to distort the UVs of the leaves texture, but make sure to add our offset as without it, our texture will be moved into an odd position and will be clipped by the sprite node.</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">COLOR</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">albedo_texture</span><span class="p">,</span> <span class="n">UV</span> <span class="o">+</span> <span class="n">combined_noise</span><span class="p">.</span><span class="n">rr</span> <span class="o">+</span> <span class="n">offset</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Here’s the whole code if you want to copy it over:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shader_type</span> <span class="n">canvas_item</span><span class="p">;</span>
+
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">albedo_texture</span> <span class="o">:</span> <span class="n">hint_albedo</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">noise_texture</span> <span class="o">:</span> <span class="n">hint_albedo</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">noise_texture2</span> <span class="o">:</span> <span class="n">hint_albedo</span><span class="p">;</span>
+
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">distortion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mo">05</span><span class="mi">8</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">offset</span> <span class="o">=</span> <span class="kt">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">time_scale</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">fragment</span><span class="p">(){</span>
+	<span class="kt">vec3</span> <span class="n">noise_color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise_texture</span><span class="p">,</span> <span class="n">UV</span> <span class="o">+</span> <span class="n">TIME</span> <span class="o">*</span> <span class="n">time_scale</span><span class="p">).</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">distortion</span><span class="p">;</span>
+	<span class="kt">vec3</span> <span class="n">noise_color2</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise_texture2</span><span class="p">,</span> <span class="kt">vec2</span><span class="p">(</span><span class="n">UV</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">UV</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">TIME</span> <span class="o">*</span> <span class="n">time_scale</span><span class="p">)).</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">distortion</span><span class="p">;</span>
+	<span class="kt">vec3</span> <span class="n">combined_noise</span> <span class="o">=</span> <span class="n">noise_color</span> <span class="o">+</span> <span class="n">noise_color2</span><span class="p">;</span>
+	<span class="n">combined_noise</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">COLOR</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">albedo_texture</span><span class="p">,</span> <span class="n">UV</span> <span class="o">+</span> <span class="n">combined_noise</span><span class="p">.</span><span class="n">rr</span> <span class="o">+</span> <span class="n">offset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="setting-up-the-material">Setting up the material</h3>
+
+<p>We need to actually put noise textures for our material, as well as the leaves texture.</p>
+
+<p>In the Inspector, you should see a new section called <code class="language-plaintext highlighter-rouge">Shader Param</code></p>
+
+<p>Open it up and place the Leaves texture in the <code class="language-plaintext highlighter-rouge">Albedo Texture</code> slot.</p>
+
+<p>As for the noise textures - click on them and select <code class="language-plaintext highlighter-rouge">New NoiseTexture</code></p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976063210/IH3o5ydos.png" alt="image.png" /></p>
+
+<p>Open it up, and check the <code class="language-plaintext highlighter-rouge">Seamless</code> option
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976095305/qZAERt3LnW.png" alt="image.png" /></p>
+
+<p>For the noise, click and select <code class="language-plaintext highlighter-rouge">New OpenSimplexNoise</code>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976134587/zPP5XecST.png" alt="image.png" /></p>
+
+<p>Open up the noise and raise the <code class="language-plaintext highlighter-rouge">Octaves</code> to 6</p>
+
+<p>Repeat all this for the other noise texture but <strong>set the seed to a different number on the second noise texture</strong></p>
+
+<p>What it should look like now:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pmMnoRTdGCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="flying-leaves">Flying Leaves</h2>
+
+<p>Open up your Pixel Art program and make a very small leaf sprite. Make sure that the leaf’s color is plain white <code class="language-plaintext highlighter-rouge">#FFFFFF</code></p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976339251/j_6FIgU7a.png" alt="image.png" /></p>
+
+<p>This is important because we are going to set the color in Godot and not here.</p>
+
+<p>Back in Godot, create a new <code class="language-plaintext highlighter-rouge">Particles2D</code> node and make sure it is emitting. Set the amount to a low number like 4.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976474688/uawhAsuB5.png" alt="image.png" /></p>
+
+<p>In the Inspector, under the <code class="language-plaintext highlighter-rouge">Process Material</code> section, create a new <code class="language-plaintext highlighter-rouge">ParticlesMaterial</code> and open it up, do this the same way we create our <code class="language-plaintext highlighter-rouge">ShaderMaterial</code> from earlier.</p>
+
+<p>You should now see a bunch of white dots falling. However, we don’t want them to fall.</p>
+
+<p>Open up the <code class="language-plaintext highlighter-rouge">ParticlesMaterial</code> and go to the <code class="language-plaintext highlighter-rouge">Gravity</code> section. Set the gravity to 0 for all the axis.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976633021/0SlTEwl7hs.png" alt="image.png" /></p>
+
+<p>Open up the <code class="language-plaintext highlighter-rouge">Direction</code> section and set the spread to a low angle, such as 20 so that out leaves don’t look erratic.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976676648/5hXPEKI81.png" alt="image.png" /></p>
+
+<p>Now lets make them move. Head over to the <code class="language-plaintext highlighter-rouge">Initial Velocity</code> section and give them some initial velocity</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976780223/R4RUOjtEg.png" alt="image.png" /></p>
+
+<p>Also lets make them rotate at random speeds. Go to the <code class="language-plaintext highlighter-rouge">Angular Velocity</code> section and set the velocity to max, as well as the randomness to max.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976846737/D-wEINMJs.png" alt="image.png" /></p>
+
+<p>They should also spawn at random angles, so go to the <code class="language-plaintext highlighter-rouge">Angle</code> section and do the same thing.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627976899466/p5yqGdo8-.png" alt="image.png" /></p>
+
+<p>Now for the last 2 steps. Open up the <code class="language-plaintext highlighter-rouge">Textures</code> section in the Inspector (Not in the <code class="language-plaintext highlighter-rouge">ParticlesMaterial</code>) and place your leaf texture in there.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627977026260/cS0NxocR7.png" alt="image.png" /></p>
+
+<p>Head back to the <code class="language-plaintext highlighter-rouge">ParticlesMaterial</code> and adjust the <code class="language-plaintext highlighter-rouge">Scale</code> parameter so that it fits your tree.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627977095478/FbRIV7Y1S.png" alt="image.png" /></p>
+
+<p>The leaves just disappear after a certain distance which looks a little weird. Let’s fix that. You may have noticed the <code class="language-plaintext highlighter-rouge">Scale Curve</code> property under the <code class="language-plaintext highlighter-rouge">Scale</code> section. Open it up and create a new <code class="language-plaintext highlighter-rouge">CurveTexture</code>.</p>
+
+<p>If there is no <code class="language-plaintext highlighter-rouge">Curve</code> already created, make one and open it up. You should see this now:</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627977276552/5_mvbFiAc.png" alt="image.png" /></p>
+
+<p>Click on the second point, and drag it down to the bottom
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627977330303/nWtwG3LhY.png" alt="image.png" /></p>
+
+<p>Now adjust the handle so the the curve takes longer to drop:
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627977393602/rqHFQxy1v.png" alt="image.png" /></p>
+
+<p>Now our leaves shrink out which looks much better!</p>
+
+<p>Finally, let’s fix the color of our leaves. Head over to the <code class="language-plaintext highlighter-rouge">Color</code> section and open up the color editor.</p>
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1627977467529/IEuPNv-Jv.png" alt="image.png" /></p>
+
+<p>You should see a little color-picker icon, use it to select the color of your tree.</p>
+
+<p>There we go! A much more lively looking pixel art tree!</p>
+
+<p>Final Product</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MSqttc_IHyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="my-links">My Links</h2>
+
+<p>Find my games on <a href="https://nekotoarts.itch.io">itch.io</a></p>
+
+<p>Find my work on <a href="https://github.com/nekotogd">GitHub</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://nekotoarts.github.io/teaching/fluffy-2d-pixel-art-trees" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://nekotoarts.github.io/teaching/fluffy-2d-pixel-art-trees" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://nekotoarts.github.io/teaching/fluffy-2d-pixel-art-trees" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="https://nekotoarts.github.io/teaching/how-to-read-depth-buffer" class="pagination--pager" title="How do I lookup the depth texture?
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+<!-- Copy to clipboard button for code blocks -->
+<!-- Script is deferred so that it adds buttons after page has loaded -->
+<script src="/assets/js/copyCode.js" defer="defer"></script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<p align="center">
+	<script
+		type="text/javascript"
+		src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+	></script>
+	<script type="text/javascript">
+		kofiwidget2.init("Support Nekoto on Ko-fi", "#e02850", "B0B3DMHCU");
+		kofiwidget2.draw();
+	</script>
+</p>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/nekotogd"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 NekotoArts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://nekotoarts.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

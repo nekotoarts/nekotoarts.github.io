@@ -1,0 +1,493 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Raytracing with Compute Shaders! - NekotoArts</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="NekotoArts">
+<meta property="og:title" content="Raytracing with Compute Shaders!">
+
+
+  <link rel="canonical" href="https://nekotoarts.github.io/portfolio/compute-shader-raytracer">
+  <meta property="og:url" content="https://nekotoarts.github.io/portfolio/compute-shader-raytracer">
+
+
+
+  <meta property="og:description" content="I was so excited to see compute shaders come to Godot 4! Shortly after the release of Godot 4 beta 1, I hopped right into experimenting with compute shaders and decided to try and create a simple raytracer! ">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://nekotoarts.github.io",
+      "logo": "https://nekotoarts.github.io/images/images/favicon_data/android-icon-192x192.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "NekotoArts",
+      "url" : "https://nekotoarts.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://nekotoarts.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="NekotoArts Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link
+	rel="apple-touch-icon"
+	sizes="57x57"
+	href="/images/favicon_data/apple-icon-57x57.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="60x60"
+	href="/images/favicon_data/apple-icon-60x60.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="72x72"
+	href="/images/favicon_data/apple-icon-72x72.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="76x76"
+	href="/images/favicon_data/apple-icon-76x76.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="114x114"
+	href="/images/favicon_data/apple-icon-114x114.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="120x120"
+	href="/images/favicon_data/apple-icon-120x120.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="144x144"
+	href="/images/favicon_data/apple-icon-144x144.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="152x152"
+	href="/images/favicon_data/apple-icon-152x152.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="180x180"
+	href="/images/favicon_data/apple-icon-180x180.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="192x192"
+	href="/images/favicon_data/android-icon-192x192.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="32x32"
+	href="/images/favicon_data/favicon-32x32.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="96x96"
+	href="/images/favicon_data/favicon-96x96.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="16x16"
+	href="/images/favicon_data/favicon-16x16.png"
+/>
+<link rel="manifest" href="/images/favicon_data/manifest.json" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta
+	name="msapplication-TileImage"
+	content="/images/favicon_data/ms-icon-144x144.png"
+/>
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/academicons.css" />
+
+<!-- Import Google Fonts -->
+<!-- Currently has OpenSans, JetBrains Mono, Didact Gothic, Khula, Karla -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Khula:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+	rel="stylesheet"
+/>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+	    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	    processEscapes: true
+	  }
+	});
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"
+	async
+></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://nekotoarts.github.io/">NekotoArts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/teaching/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/portfolio/">Portfolio</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/citation-and-licensing/">Citing and Licensing</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/code_samples/">Snippets</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+   
+
+<div itemscope itemtype="http://schema.org/Person">
+    <div class="author__avatar">
+         <img src="https://nekotoarts.github.io/images/NekotoBranding/NekotoArts logo upscaled alternative.png" class="author__avatar" alt="Nekoto"> 
+    </div>
+
+    <div class="author__content">
+        <h3 class="author__name">Nekoto</h3>
+        
+        <p class="author__bio">Technical Artist who loves sharing ideas. Really loves BotW.</p>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+            <li>
+                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Bad Shader Code, GLSL
+            </li>
+               
+            <li>
+                <a href="mailto:nekoto.business@gmail.com"
+                    ><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a
+                >
+            </li>
+               
+            <li>
+                <a href="https://twitter.com/nekotoarts"
+                    ><i
+                        class="fab fa-fw fa-twitter-square"
+                        aria-hidden="true"
+                    ></i>
+                    Twitter</a
+                >
+            </li>
+                    
+            <li>
+                <a href="https://github.com/nekotogd"
+                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i>
+                    Github</a
+                >
+            </li>
+                   
+            <li>
+                <a href="https://www.youtube.com/c/NekotoArts"
+                    ><i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+                    YouTube</a
+                >
+            </li>
+                      
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Raytracing with Compute Shaders!">
+    <meta itemprop="description" content="I was so excited to see compute shaders come to Godot 4! Shortly after the release of Godot 4 beta 1, I hopped right into experimenting with compute shaders and decided to try and create a simple raytracer! ">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Raytracing with Compute Shaders!
+</h1>
+          
+        
+        
+        <!--  -->
+        
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>I was really excited to hear new for Godot 4! In July 2021, was watching the <a href="https://youtu.be/g35xbKWF3ZQ?t=4739">Godot Engine developer Q&amp;A</a> and had asked in chat about planned features for shaders.</p>
+
+<p>Specifically, I asked about plans for Geometry Shaders and Tessellation Shaders, to which <a href="https://twitter.com/hugolocurcio?lang=en">Hugo Locurcio (Calinou)</a> responded about planned support for Compute Shaders in Godot 4!</p>
+
+<p><img src="/images/ComputeRaytracing/DevStream_CommentNekoto.png" alt="" />
+<img src="/images/ComputeRaytracing/DevStream_CommentCalinou.png" alt="" /></p>
+
+<p>I was extremely excited to finally be able to play around with compute shaders! Which is why when Godot 4 beta 1 finally released, I couldn’t contain my excitement and immediately jumped onto trying them out!</p>
+
+<h3 id="raytracing">Raytracing!</h3>
+
+<p>Through some exploring and trying to figure out how compute shaders were integrated into the engine, I eventually got a better understanding of the <code class="language-plaintext highlighter-rouge">RenderingDevice</code> and <code class="language-plaintext highlighter-rouge">RenderingServer</code> classes in Godot 4.</p>
+
+<p>I prefer solidifying my learning experiences by trying to make a personal project using whatever I have learnt. So, after researching some of the uses for compute shaders for a while, I landed on the excellent raytracing series by Kuri (2018), which used compute shaders in Unity to create its raytracer!</p>
+
+<p><img src="/images/ComputeRaytracing/gpi-rt-teaser-sqr.png" alt="" /></p>
+
+<p><em>Figure 1. Raytraced Spheres by Kuri (2018)</em></p>
+
+<p>I thought this would be a fun project to try and recreate, and so I got to work on raytracer!</p>
+
+<p>Finally, I documented my experiences and shared what I had learnt by creating a tutorial for compute shaders in Godot 4. You can watch the video here:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ueUMr92GQJc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h3 id="source-code">Source Code</h3>
+
+<p><a href="https://github.com/nekotogd/Raytracing_Godot4"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a></p>
+
+<h2 id="references-and-resources-used">References and Resources Used</h2>
+
+<p>Kuri, D. (2018, May 3). <em>GPU Ray Tracing in Unity – Part 1</em>. Three Eyed Games. <a href="http://blog.three-eyed-games.com/2018/05/03/gpu-ray-tracing-in-unity-part-1/">http://blog.three-eyed-games.com/2018/05/03/gpu-ray-tracing-in-unity-part-1/</a></p>
+
+<p>Möller, T., &amp; Trumbore, B. (1997). <em>Fast, Minimum Storage Ray-Triangle Intersection</em>. Program of Computer Graphics. <a href="https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/pubs/raytri_tam.pdf">https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/pubs/raytri_tam.pdf</a></p>
+
+<p>Scratchapixel. (2014, August 15). <em>Ray-Tracing a Polygon Mesh (Ray-Tracing a Polygon Mesh (Part 2))</em>. <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-polygon-mesh/ray-tracing-polygon-mesh-part-2">https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-polygon-mesh/ray-tracing-polygon-mesh-part-2</a></p>
+
+<p>Whitaker, R. B. (2009, January 21). <em>Creating a Specular Lighting Shader</em>. RB Whitaker’s Wiki. <a href="http://rbwhitaker.wikidot.com/specular-lighting-shader">http://rbwhitaker.wikidot.com/specular-lighting-shader</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://nekotoarts.github.io/portfolio/compute-shader-raytracer" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://nekotoarts.github.io/portfolio/compute-shader-raytracer" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://nekotoarts.github.io/portfolio/compute-shader-raytracer" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="https://nekotoarts.github.io/portfolio/bean-of-the-wild" class="pagination--pager" title="Bean of the Wild!
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+<!-- Copy to clipboard button for code blocks -->
+<!-- Script is deferred so that it adds buttons after page has loaded -->
+<script src="/assets/js/copyCode.js" defer="defer"></script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<p align="center">
+	<script
+		type="text/javascript"
+		src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+	></script>
+	<script type="text/javascript">
+		kofiwidget2.init("Support Nekoto on Ko-fi", "#e02850", "B0B3DMHCU");
+		kofiwidget2.draw();
+	</script>
+</p>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/nekotogd"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 NekotoArts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://nekotoarts.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

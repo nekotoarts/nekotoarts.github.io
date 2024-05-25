@@ -1,0 +1,541 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>How do I lookup the depth texture? - NekotoArts</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="NekotoArts">
+<meta property="og:title" content="How do I lookup the depth texture?">
+
+
+  <link rel="canonical" href="https://nekotoarts.github.io/teaching/how-to-read-depth-buffer">
+  <meta property="og:url" content="https://nekotoarts.github.io/teaching/how-to-read-depth-buffer">
+
+
+
+  <meta property="og:description" content="The depth buffer’s values seem really weird when you sample it like a regular texture. How do you even get the linear depth value that you’re looking for? ">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2022-08-23T00:00:00-07:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://nekotoarts.github.io",
+      "logo": "https://nekotoarts.github.io/images/images/favicon_data/android-icon-192x192.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "NekotoArts",
+      "url" : "https://nekotoarts.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://nekotoarts.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="NekotoArts Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link
+	rel="apple-touch-icon"
+	sizes="57x57"
+	href="/images/favicon_data/apple-icon-57x57.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="60x60"
+	href="/images/favicon_data/apple-icon-60x60.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="72x72"
+	href="/images/favicon_data/apple-icon-72x72.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="76x76"
+	href="/images/favicon_data/apple-icon-76x76.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="114x114"
+	href="/images/favicon_data/apple-icon-114x114.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="120x120"
+	href="/images/favicon_data/apple-icon-120x120.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="144x144"
+	href="/images/favicon_data/apple-icon-144x144.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="152x152"
+	href="/images/favicon_data/apple-icon-152x152.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="180x180"
+	href="/images/favicon_data/apple-icon-180x180.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="192x192"
+	href="/images/favicon_data/android-icon-192x192.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="32x32"
+	href="/images/favicon_data/favicon-32x32.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="96x96"
+	href="/images/favicon_data/favicon-96x96.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="16x16"
+	href="/images/favicon_data/favicon-16x16.png"
+/>
+<link rel="manifest" href="/images/favicon_data/manifest.json" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta
+	name="msapplication-TileImage"
+	content="/images/favicon_data/ms-icon-144x144.png"
+/>
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/academicons.css" />
+
+<!-- Import Google Fonts -->
+<!-- Currently has OpenSans, JetBrains Mono, Didact Gothic, Khula, Karla -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Khula:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+	rel="stylesheet"
+/>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+	    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	    processEscapes: true
+	  }
+	});
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"
+	async
+></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://nekotoarts.github.io/">NekotoArts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/teaching/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/portfolio/">Portfolio</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/citation-and-licensing/">Citing and Licensing</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/code_samples/">Snippets</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+   
+
+<div itemscope itemtype="http://schema.org/Person">
+    <div class="author__avatar">
+         <img src="https://nekotoarts.github.io/images/NekotoBranding/NekotoArts logo upscaled alternative.png" class="author__avatar" alt="Nekoto"> 
+    </div>
+
+    <div class="author__content">
+        <h3 class="author__name">Nekoto</h3>
+        
+        <p class="author__bio">Technical Artist who loves sharing ideas. Really loves BotW.</p>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+            <li>
+                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Bad Shader Code, GLSL
+            </li>
+               
+            <li>
+                <a href="mailto:nekoto.business@gmail.com"
+                    ><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a
+                >
+            </li>
+               
+            <li>
+                <a href="https://twitter.com/nekotoarts"
+                    ><i
+                        class="fab fa-fw fa-twitter-square"
+                        aria-hidden="true"
+                    ></i>
+                    Twitter</a
+                >
+            </li>
+                    
+            <li>
+                <a href="https://github.com/nekotogd"
+                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i>
+                    Github</a
+                >
+            </li>
+                   
+            <li>
+                <a href="https://www.youtube.com/c/NekotoArts"
+                    ><i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+                    YouTube</a
+                >
+            </li>
+                      
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="How do I lookup the depth texture?">
+    <meta itemprop="description" content="The depth buffer’s values seem really weird when you sample it like a regular texture. How do you even get the linear depth value that you’re looking for? ">
+    <meta itemprop="datePublished" content="August 23, 2022">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">How do I lookup the depth texture?
+</h1>
+          
+        
+        
+        <!-- 
+          <p> Shader Tutorial, <i></i>, 2022 </p>
+         -->
+        
+        
+        <p class="page__date">
+          <strong>
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:
+          </strong>
+          <time datetime="2022-08-23T00:00:00-07:00">August 23, 2022
+          </time>,<i class="fa fa-filter"></i><strong> Type: </strong> Shader Tutorial
+        </p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><img src="/images/DepthTextureArticle/depth_buffer.png" alt="" /></p>
+
+<p>Here’s a short tutorial on reading the <code class="language-plaintext highlighter-rouge">DEPTH_TEXTURE</code> in Godot! I remember this being one of the most confusing things to understand when beginning to write shaders, so, I decided to make a small written breakdown here.</p>
+
+<p>The depth buffer contains a bunch of floating-point values that hold the depth of every single pixel in the scene. These values are stored on the GPU’s memory in a texture, called the ‘depth texture’.</p>
+
+<p>Godot already provides this to us natively in all <strong>spatial</strong> shaders. Which means we cannot sample the depth texture in <code class="language-plaintext highlighter-rouge">canvas_item</code> or <code class="language-plaintext highlighter-rouge">particles</code> shader types.</p>
+
+<h2 id="sampling-the-depth-texture">Sampling the Depth Texture</h2>
+
+<p>The depth texture holds the (transformed) depth values for the scene. These are all floating-point values, so only a single channel of the depth texture is actually filled with data. This channel is the first channel (the red channel) of the depth texture.</p>
+
+<p>In the <code class="language-plaintext highlighter-rouge">fragment()</code> function, we sample it as follows:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">DEPTH_TEXTURE</span><span class="p">,</span> <span class="n">SCREEN_UV</span><span class="p">).</span><span class="n">r</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Notice the <code class="language-plaintext highlighter-rouge">.r</code> that allows us to take just the red channel of the depth texture. Also, we use <code class="language-plaintext highlighter-rouge">SCREEN_UV</code> because this has the same UVs as the <code class="language-plaintext highlighter-rouge">SCREEN_TEXTURE</code>.</p>
+
+<p>This depth value is totally unusable for most situations however, because this isn’t the linear depth of the scene. Instead, its currently on a logarithmic scale, and we need to transform first.</p>
+
+<p><img src="/images/DepthTextureArticle/raw_depth_texture.png" alt="" />
+<em>Raw depth texture value when we read it</em></p>
+
+<p><img src="/images/DepthTextureArticle/depth_raised_to_50.png" alt="" />
+<em>Raising the power of this depth to 50 shows some details</em> <code class="language-plaintext highlighter-rouge">pow(depth, 50.0)</code></p>
+
+<p>This occurs because the vertices of the mesh are transformed into clip-space using the <code class="language-plaintext highlighter-rouge">PROJECTION_MATRIX</code> which makes the “z” value non-linear. Of course, to counteract this, we need to just multiply it by the <code class="language-plaintext highlighter-rouge">INV_PROJECTION_MATRIX</code> so we can head back into view-space.</p>
+
+<p>If you’re new to shaders, take a look at the different vertex transformation stages below:</p>
+
+<p><img src="/images/DepthTextureArticle/coordinate_systems_dark.png" alt="" />
+<em>Figure 1. Vertex Transformation Stages (Vries, 2014).</em></p>
+
+<p>We currently have a clip-space value for the depth texture, so we want to get back to view space by undoing the projection transformation.</p>
+
+<p>Right now, the <code class="language-plaintext highlighter-rouge">depth</code> value that we have is between <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">1</code>, but completely non-linear. Also, don’t forget that we’re working in clip-space, so we have to construct NDC (normalized device coordinates) that runs from <code class="language-plaintext highlighter-rouge">-1</code> to <code class="language-plaintext highlighter-rouge">1</code>:</p>
+
+<blockquote>
+  <p>Note for Godot 4 users: Clip-space normalized device coordinates (NDC) used to run from $[-1,1]$ on all axes in OpenGL (Vries, 2014), however, Vulkan handles NDCs a little differently.</p>
+
+  <p>The $x$ and $y$ axes still run from $[-1, 1]$ but the $z$ axis runs from $[0,1]$ (Wellings, 2016).</p>
+</blockquote>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec3</span> <span class="n">screen_coords</span> <span class="o">=</span> <span class="kt">vec3</span><span class="p">(</span><span class="n">SCREEN_UV</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span> <span class="c1">// Still between 0 and 1;</span>
+<span class="kt">vec3</span> <span class="n">ndc</span> <span class="o">=</span> <span class="n">screen_coords</span> <span class="o">*</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="c1">// Now between -1 and 1;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">vec3(SCREEN_UV, depth)</code> is some GLSL syntax sugar that is equivalent to <code class="language-plaintext highlighter-rouge">vec3(SCREEN_UV.x, SCREEN_UV.y, depth)</code></p>
+
+<p>Now, let’s make this linear again by transforming them:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec4</span> <span class="n">view_space</span> <span class="o">=</span> <span class="n">INV_PROJECTION_MATRIX</span> <span class="o">*</span> <span class="nf">vec4</span><span class="p">(</span><span class="n">ndc</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">view_space</span><span class="p">.</span><span class="n">xyz</span> <span class="o">/=</span> <span class="n">view</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+<span class="n">depth</span> <span class="o">=</span> <span class="o">-</span><span class="n">view</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Behold! You now have the linear value of scene’s depth! Here’s the full code if you want to come back later and just copy it:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">DEPTH_TEXTURE</span><span class="p">,</span> <span class="n">SCREEN_UV</span><span class="p">).</span><span class="n">r</span><span class="p">;</span>
+<span class="kt">vec3</span> <span class="n">screen_coords</span> <span class="o">=</span> <span class="kt">vec3</span><span class="p">(</span><span class="n">SCREEN_UV</span><span class="p">,</span> <span class="n">depth</span><span class="p">);</span>
+<span class="kt">vec3</span> <span class="n">ndc</span> <span class="o">=</span> <span class="n">screen_coords</span> <span class="o">*</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">vec4</span> <span class="n">view_space</span> <span class="o">=</span> <span class="n">INV_PROJECTION_MATRIX</span> <span class="o">*</span> <span class="nf">vec4</span><span class="p">(</span><span class="n">ndc</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">view_space</span><span class="p">.</span><span class="n">xyz</span> <span class="o">/=</span> <span class="n">view</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+<span class="n">depth</span> <span class="o">=</span> <span class="o">-</span><span class="n">view</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p>Wellings, M. (2016, March 20). The New Vulkan Coordinate System. Retrieved September 10, 2022, from <a href="https://matthewwellings.com/blog/the-new-vulkan-coordinate-system/">https://matthewwellings.com/blog/the-new-vulkan-coordinate-system/</a></p>
+
+<p>Vries, J. D. (2014, June). <em>Coordinate Systems</em>. LearnOpenGL. Retrieved August 23, 2022, from <a href="learnopengl.com/Getting-started/Coordinate-Systems">https://learnopengl.com/Getting-started/Coordinate-Systems</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://nekotoarts.github.io/teaching/how-to-read-depth-buffer" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://nekotoarts.github.io/teaching/how-to-read-depth-buffer" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://nekotoarts.github.io/teaching/how-to-read-depth-buffer" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="https://nekotoarts.github.io/teaching/fluffy-2d-pixel-art-trees" class="pagination--pager" title="Fluffy 2D Pixel Art Trees!
+">Previous</a>
+    
+    
+      <a href="https://nekotoarts.github.io/teaching/polar-water-breakdown" class="pagination--pager" title="Water HotSpring Breakdown
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+<!-- Copy to clipboard button for code blocks -->
+<!-- Script is deferred so that it adds buttons after page has loaded -->
+<script src="/assets/js/copyCode.js" defer="defer"></script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<p align="center">
+	<script
+		type="text/javascript"
+		src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+	></script>
+	<script type="text/javascript">
+		kofiwidget2.init("Support Nekoto on Ko-fi", "#e02850", "B0B3DMHCU");
+		kofiwidget2.draw();
+	</script>
+</p>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/nekotogd"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 NekotoArts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://nekotoarts.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,640 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Everything About Textures in Compute Shaders! - NekotoArts</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="NekotoArts">
+<meta property="og:title" content="Everything About Textures in Compute Shaders!">
+
+
+  <link rel="canonical" href="https://nekotoarts.github.io/teaching/compute-shader-textures">
+  <meta property="og:url" content="https://nekotoarts.github.io/teaching/compute-shader-textures">
+
+
+
+  <meta property="og:description" content="Not enough documentation on using textures in Godot 4 compute shaders? Here’s everything you need to know.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2023-01-18T00:00:00-07:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://nekotoarts.github.io",
+      "logo": "https://nekotoarts.github.io/images/images/favicon_data/android-icon-192x192.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "NekotoArts",
+      "url" : "https://nekotoarts.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://nekotoarts.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="NekotoArts Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link
+	rel="apple-touch-icon"
+	sizes="57x57"
+	href="/images/favicon_data/apple-icon-57x57.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="60x60"
+	href="/images/favicon_data/apple-icon-60x60.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="72x72"
+	href="/images/favicon_data/apple-icon-72x72.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="76x76"
+	href="/images/favicon_data/apple-icon-76x76.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="114x114"
+	href="/images/favicon_data/apple-icon-114x114.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="120x120"
+	href="/images/favicon_data/apple-icon-120x120.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="144x144"
+	href="/images/favicon_data/apple-icon-144x144.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="152x152"
+	href="/images/favicon_data/apple-icon-152x152.png"
+/>
+<link
+	rel="apple-touch-icon"
+	sizes="180x180"
+	href="/images/favicon_data/apple-icon-180x180.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="192x192"
+	href="/images/favicon_data/android-icon-192x192.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="32x32"
+	href="/images/favicon_data/favicon-32x32.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="96x96"
+	href="/images/favicon_data/favicon-96x96.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="16x16"
+	href="/images/favicon_data/favicon-16x16.png"
+/>
+<link rel="manifest" href="/images/favicon_data/manifest.json" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta
+	name="msapplication-TileImage"
+	content="/images/favicon_data/ms-icon-144x144.png"
+/>
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="https://nekotoarts.github.io/assets/css/academicons.css" />
+
+<!-- Import Google Fonts -->
+<!-- Currently has OpenSans, JetBrains Mono, Didact Gothic, Khula, Karla -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Khula:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+	rel="stylesheet"
+/>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+	    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	    processEscapes: true
+	  }
+	});
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"
+	async
+></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://nekotoarts.github.io/">NekotoArts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/teaching/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/portfolio/">Portfolio</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/citation-and-licensing/">Citing and Licensing</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://nekotoarts.github.io/code_samples/">Snippets</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+   
+
+<div itemscope itemtype="http://schema.org/Person">
+    <div class="author__avatar">
+         <img src="https://nekotoarts.github.io/images/NekotoBranding/NekotoArts logo upscaled alternative.png" class="author__avatar" alt="Nekoto"> 
+    </div>
+
+    <div class="author__content">
+        <h3 class="author__name">Nekoto</h3>
+        
+        <p class="author__bio">Technical Artist who loves sharing ideas. Really loves BotW.</p>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+            <li>
+                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Bad Shader Code, GLSL
+            </li>
+               
+            <li>
+                <a href="mailto:nekoto.business@gmail.com"
+                    ><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a
+                >
+            </li>
+               
+            <li>
+                <a href="https://twitter.com/nekotoarts"
+                    ><i
+                        class="fab fa-fw fa-twitter-square"
+                        aria-hidden="true"
+                    ></i>
+                    Twitter</a
+                >
+            </li>
+                    
+            <li>
+                <a href="https://github.com/nekotogd"
+                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i>
+                    Github</a
+                >
+            </li>
+                   
+            <li>
+                <a href="https://www.youtube.com/c/NekotoArts"
+                    ><i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+                    YouTube</a
+                >
+            </li>
+                      
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Everything About Textures in Compute Shaders!">
+    <meta itemprop="description" content="Not enough documentation on using textures in Godot 4 compute shaders? Here’s everything you need to know.">
+    <meta itemprop="datePublished" content="January 18, 2023">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Everything About Textures in Compute Shaders!
+</h1>
+          
+        
+        
+        <!-- 
+          <p> Shader Tutorial, <i></i>, 2023 </p>
+         -->
+        
+        
+        <p class="page__date">
+          <strong>
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:
+          </strong>
+          <time datetime="2023-01-18T00:00:00-07:00">January 18, 2023
+          </time>,<i class="fa fa-filter"></i><strong> Type: </strong> Shader Tutorial
+        </p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><img src="/images/ComputeShaderTextures/thumbnail_draft1.png" alt="" /></p>
+
+<p>Godot 4 is now racing towards its stable release, and I’ve been playing around with the new compute shader system it includes now. However, there isn’t quite enough documentation surrounding them yet, and most sources are only covering how to use storage buffers.</p>
+
+<p>I made a video covering an <a href="/portfolio/compute-shader-raytracer">Introduction to Compute Shaders</a> but avoided talking about textures because I was still getting used to using them, and beta 1 had even less information surrounding them than we have right now.</p>
+
+<p>So here’s everything that you’ll need to know about using textures in a compute shader for Godot 4, organized by usage scenario.</p>
+
+<h2 id="writing-to-a-texture">Writing to a Texture</h2>
+
+<p>Suppose you’ve got data in a compute shader that you want to store as colors in a texture. First, we’ll declare a writeable texture similar to how we declare storage buffers.</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">layout</span><span class="p">(</span><span class="n">set</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">binding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rgba32f</span><span class="p">)</span> <span class="k">uniform</span> <span class="kr">image2D</span> <span class="n">OUTPUT_TEXTURE</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The cool thing about compute shaders is that we can output to multiple textures at once, so feel free to add as many as you need.</p>
+
+<p>To write out color data from the compute shader we use an <code class="language-plaintext highlighter-rouge">image2D</code>. Notice in the declaration that we also specify the image format of <code class="language-plaintext highlighter-rouge">rgba32f</code>, which means that our image data is stored as 4 channels per-pixel with each channel consisting of a 32-bit floating-point value. This format corresponds to us setting pixel data using a <code class="language-plaintext highlighter-rouge">vec4</code>.</p>
+
+<p>You can see more about all the different possible formats <a href="https://www.khronos.org/opengl/wiki/Layout_Qualifier_(GLSL)">here</a>.</p>
+
+<p>Now, somewhere within your compute shader you have successfully calculated the color you want to store in the image. Before setting it however, we need to define what position in the image we want to write to.</p>
+
+<p>In fragment shaders, we’re used to giving output colors using UV coordinates, but in compute shaders, we need to define the integer-coordinate of our texel (pixel on a texture = texel). This is because the image doesn’t come with UV data, we only know that it has a grid of texels, and we can write to any of them.</p>
+
+<p>Suppose your compute shader is running 1 invocation for every pixel, then we know that <code class="language-plaintext highlighter-rouge">gl_GlobalInvocationID.xy</code> corresponds exactly to the texel we want to write to. Setting the color is pretty simple then:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec4</span> <span class="n">color</span><span class="p">;</span> <span class="c1">// Calculated by Compute Shader</span>
+<span class="kt">ivec2</span> <span class="n">texel</span> <span class="o">=</span> <span class="kt">ivec2</span><span class="p">(</span><span class="n">gl_GlobalInvocationID</span><span class="p">.</span><span class="n">xy</span><span class="p">);</span>
+<span class="n">imageStore</span><span class="p">(</span><span class="n">OUTPUT_TEXTURE</span><span class="p">,</span> <span class="n">texel</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Depending on where in the image you want to write to, and how you’re compute shader is handling its calculations, you’ll have to figure out where the texel you want to write to is located.</p>
+
+<h3 id="attaching-the-texture-in-gdscript">Attaching the Texture in GDScript</h3>
+
+<p>For declaring any texture to attach to a compute shader, you’ll need:</p>
+
+<ul>
+  <li>A texture format (<code class="language-plaintext highlighter-rouge">RDTextureFormat</code>)</li>
+  <li>A texture view (<code class="language-plaintext highlighter-rouge">RDTextureView</code>)</li>
+  <li>Image Byte Data</li>
+</ul>
+
+<p>Even if the texture is an output, it will need to be initialized with some byte data. We’ll start by creating a texture format and assigning the values we need:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">fmt</span> <span class="p">:</span><span class="o">=</span> <span class="n">RDTextureFormat</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">output_texture_width</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">output_texture_height</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">DATA_FORMAT_R32G32B32A32_SFLOAT</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">usage_bits</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">TEXTURE_USAGE_CAN_UPDATE_BIT</span> <span class="o">|</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">TEXTURE_USAGE_STORAGE_BIT</span> <span class="o">|</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">TEXTURE_USAGE_CAN_COPY_FROM_BIT</span>
+</code></pre></div></div>
+
+<p>The format parameter must <strong>exactly</strong> match what we set in our shader. Since we used <code class="language-plaintext highlighter-rouge">rgba32f</code> in the shader, we do the same for the texture format: <code class="language-plaintext highlighter-rouge">RenderingDevice.DATA_FORMAT_R32G32B32A32_SFLOAT</code>.</p>
+
+<p>You’re probably wondering what those usage bits are right? They tell Vulkan what kind of operations to expect will be done on this texture. Specifically, <code class="language-plaintext highlighter-rouge">RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT</code> is extremely important because it allows the CPU to read back whatever the output of the compute shader is!</p>
+
+<p>Next up we’ll create the texture view. It only contains settings regarding swizzling and overriding the format, so there’s nothing for us to set, but we still need it anyways.</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">view</span> <span class="p">:</span><span class="o">=</span> <span class="n">RDTextureView</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The last thing we need to prepare is the initialization byte data. We’ll do that by creating a new, empty <code class="language-plaintext highlighter-rouge">Image</code> and then pulling the byte data from there. Finally, we’ll ask our <code class="language-plaintext highlighter-rouge">RenderingDevice</code> to create a texture for us (<code class="language-plaintext highlighter-rouge">rd</code> is a <code class="language-plaintext highlighter-rouge">RenderingDevice</code> instance).</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">output_image</span> <span class="p">:</span><span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">output_texture_width</span><span class="p">,</span> <span class="n">output_texture_height</span><span class="p">,</span> <span class="bp">false</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">FORMAT_RGBAF</span><span class="p">)</span>
+<span class="n">output_tex</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">texture_create</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="p">[</span><span class="n">output_image</span><span class="o">.</span><span class="n">get_data</span><span class="p">()])</span>
+<span class="k">var</span> <span class="n">output_tex_uniform</span> <span class="p">:</span><span class="o">=</span> <span class="n">RDUniform</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">output_tex_uniform</span><span class="o">.</span><span class="n">uniform_type</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">UNIFORM_TYPE_IMAGE</span>
+<span class="n">output_tex_uniform</span><span class="o">.</span><span class="n">binding</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">output_tex_uniform</span><span class="o">.</span><span class="n">add_id</span><span class="p">(</span><span class="n">output_tex</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Again, note that the <code class="language-plaintext highlighter-rouge">Image</code> we created needs to have the same format <code class="language-plaintext highlighter-rouge">Image.FORMAT_RGBAF</code>. Additionally, since we’re using an <code class="language-plaintext highlighter-rouge">image2D</code> in the shader, our uniform type is set to <code class="language-plaintext highlighter-rouge">RenderingDevice.UNIFORM_TYPE_IMAGE</code>.</p>
+
+<p>Now you can add this <code class="language-plaintext highlighter-rouge">output_tex_uniform</code> to the binding list in the same way you add storage buffers to the binding list.</p>
+
+<h2 id="sampling-a-texture-in-a-compute-shader">Sampling a Texture in a Compute Shader</h2>
+
+<p>Define the input texture similar to how we declare storage buffers:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">layout</span><span class="p">(</span><span class="n">set</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">binding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">INPUT_TEXTURE</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Then just sample the texture the same way you would as in a fragment shader. You can calculate UV coordinates by doing <code class="language-plaintext highlighter-rouge">uv = texel_position / texture_resolution</code>. Also you can find the resolution of a <code class="language-plaintext highlighter-rouge">sampler2D</code> using <code class="language-plaintext highlighter-rouge">textureSize(TEXTURE)</code>, or find the resolution of an <code class="language-plaintext highlighter-rouge">image2D</code> using <code class="language-plaintext highlighter-rouge">imageSize(IMAGE)</code>.</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec4</span> <span class="n">color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">INPUT_TEXTURE</span><span class="p">,</span> <span class="n">UV</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="attaching-the-texture-and-sampler-in-gdscript">Attaching the Texture and Sampler in GDScript</h3>
+
+<p>Sampler types are a little different from just attaching textures to compute shaders. We have to create a uniform that holds two IDs:</p>
+
+<ul>
+  <li>The type of texture sampler to be used by the shader</li>
+  <li>The texture to be sampled</li>
+</ul>
+
+<p>Creating the sampler is done using the <code class="language-plaintext highlighter-rouge">RDSamplerState</code> class:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">sampler_state</span> <span class="p">:</span><span class="o">=</span> <span class="n">RDSamplerState</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">var</span> <span class="n">sampler</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">sampler_create</span><span class="p">(</span><span class="n">sampler_state</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Next, let’s load up the texture we want to sample in the shader:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">image_file</span> <span class="p">:</span> <span class="n">Texture2D</span> <span class="o">=</span> <span class="nb">load</span><span class="p">(</span><span class="s2">"res://path/to/image.png"</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">image</span> <span class="p">:</span><span class="o">=</span> <span class="n">image_file</span><span class="o">.</span><span class="n">get_image</span><span class="p">()</span>
+<span class="n">image</span><span class="o">.</span><span class="nb">convert</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">FORMAT_RGBAF</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Our <code class="language-plaintext highlighter-rouge">sampler2D</code> type reads back a <code class="language-plaintext highlighter-rouge">vec4</code>, which is 4-channel 32-bit floating-point value. That corresponds to the <code class="language-plaintext highlighter-rouge">Image.FORMAT_RGBAF</code>, which is why we’re converting the image before using it.</p>
+
+<p>Now let’s create the texture format and texture view, mostly the same as we did before:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">fmt</span> <span class="o">=</span> <span class="n">RDTextureFormat</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">DATA_FORMAT_R32G32B32A32_SFLOAT</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">usage_bits</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">TEXTURE_USAGE_CAN_COPY_FROM_BIT</span> <span class="o">|</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">TEXTURE_USAGE_SAMPLING_BIT</span> <span class="o">|</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">TEXTURE_USAGE_CAN_UPDATE_BIT</span>
+<span class="k">var</span> <span class="n">view</span> <span class="o">=</span> <span class="n">RDTextureView</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Notice that this time we also added the <code class="language-plaintext highlighter-rouge">RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT</code>.</p>
+
+<p>Finally, let’s create the texture and add both the sampler and texture to a uniform so we can pass that into the binding list:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">tex</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">texture_create</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">get_data</span><span class="p">()])</span>
+<span class="k">var</span> <span class="n">sampler_uniform</span> <span class="p">:</span><span class="o">=</span> <span class="n">RDUniform</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">sampler_uniform</span><span class="o">.</span><span class="n">uniform_type</span> <span class="o">=</span> <span class="n">RenderingDevice</span><span class="o">.</span><span class="n">UNIFORM_TYPE_SAMPLER_WITH_TEXTURE</span>
+<span class="n">sampler_uniform</span><span class="o">.</span><span class="n">binding</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sampler_uniform</span><span class="o">.</span><span class="n">add_id</span><span class="p">(</span><span class="n">sampler</span><span class="p">)</span>
+<span class="n">sampler_uniform</span><span class="o">.</span><span class="n">add_id</span><span class="p">(</span><span class="n">tex</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We choose the uniform type <code class="language-plaintext highlighter-rouge">RenderingDevice.UNIFORM_TYPE_SAMPLER_WITH_TEXTURE</code> as that’s what we defined in our shader. Now you can add this <code class="language-plaintext highlighter-rouge">sampler_uniform</code> to the binding list in the same way you add storage buffers to the binding list.</p>
+
+<h2 id="texture-readback-and-texture-updating">Texture Readback and Texture Updating</h2>
+
+<p>Suppose you have two textures passed to your compute shader. One that it writes to, and one that it reads from. I’ll show you how to copy the data from one texture into another, which will teach you how to read and write to a texture from the CPU side.</p>
+
+<p>Let’s call the texture being written to by the compute shader as the <code class="language-plaintext highlighter-rouge">output_tex</code>, and the one that it is sampling will be called <code class="language-plaintext highlighter-rouge">sampler_tex</code>.</p>
+
+<p>Now, <code class="language-plaintext highlighter-rouge">output_tex</code> contains all the output data from the last time we dispatched the compute shader, and we want to put all that data into <code class="language-plaintext highlighter-rouge">sampler_tex</code> so that it can use it on the next dispatch.</p>
+
+<p>First, let’s readback whatever was written to <code class="language-plaintext highlighter-rouge">output_tex</code> by our compute shader:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">byte_data</span> <span class="p">:</span> <span class="n">PackedByteArray</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">texture_get_data</span><span class="p">(</span><span class="n">output_tex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Pretty simple right? The <code class="language-plaintext highlighter-rouge">0</code> over there means that we are reading from texture layer <code class="language-plaintext highlighter-rouge">0</code>. If you have multiple layers, you pass in whatever layer you wish to read from. If you want to display what’s in here, you can use the <code class="language-plaintext highlighter-rouge">Image</code> class:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">byte_data</span> <span class="p">:</span> <span class="n">PackedByteArray</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">texture_get_data</span><span class="p">(</span><span class="n">output_tex</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">image</span> <span class="p">:</span><span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">create_from_data</span><span class="p">(</span><span class="n">output_tex_width</span><span class="p">,</span> <span class="n">output_tex_height</span><span class="p">,</span> <span class="bp">false</span><span class="p">,</span> <span class="n">Image</span><span class="o">.</span><span class="n">FORMAT_RGBAF</span><span class="p">,</span> <span class="n">byte_data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Then attach that image to a texture or save it to the disk to view it.</p>
+
+<p>Writing data is pretty easy too! If we have byte data that we want to upload to one of the textures, all we need to do is:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rd</span><span class="o">.</span><span class="n">texture_update</span><span class="p">(</span><span class="n">sampler_tex</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">byte_data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>So copying data from one texture to another is as simple as one line of code:</p>
+
+<div class="language-gdscript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rd</span><span class="o">.</span><span class="n">texture_update</span><span class="p">(</span><span class="n">old_frame_tex</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rd</span><span class="o">.</span><span class="n">texture_get_data</span><span class="p">(</span><span class="n">output_tex</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Keep in mind that this <strong>only works if both textures have the same dimensions</strong>. You cannot copy data from one texture into another unless they have the same dimensions. Uploaded data must always match the resolution that was declared in the texture format when creating the texture object.</p>
+
+<p>Now you know how to create textures, write to them in a compute shader, sample them in a compute shader, read back the data in GDScript, and also update or copy them in GDScript.</p>
+
+<p>I hope this helped anyone who’s trying to fiddle around with compute shaders!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://nekotoarts.github.io/teaching/compute-shader-textures" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://nekotoarts.github.io/teaching/compute-shader-textures" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://nekotoarts.github.io/teaching/compute-shader-textures" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="https://nekotoarts.github.io/teaching/polar-water-breakdown" class="pagination--pager" title="Water HotSpring Breakdown
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+<!-- Copy to clipboard button for code blocks -->
+<!-- Script is deferred so that it adds buttons after page has loaded -->
+<script src="/assets/js/copyCode.js" defer="defer"></script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<p align="center">
+	<script
+		type="text/javascript"
+		src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+	></script>
+	<script type="text/javascript">
+		kofiwidget2.init("Support Nekoto on Ko-fi", "#e02850", "B0B3DMHCU");
+		kofiwidget2.draw();
+	</script>
+</p>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/nekotogd"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 NekotoArts. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://nekotoarts.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
