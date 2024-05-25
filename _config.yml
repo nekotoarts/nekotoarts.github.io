@@ -12,7 +12,7 @@ title_separator: "-"
 name: &name "NekotoArts"
 description: &description "Technical Artist, Shader Wizard, Cool Guy"
 url: https://nekotoarts.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl: "" # the subpath of your site, e.g. "/blog"
+baseurl: null # the subpath of your site, e.g. "/blog"
 repository: "nekotoarts/nekotoarts.github.io"
 teaser: # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs: false # true, false (default)
@@ -62,7 +62,7 @@ facebook:
     username:
     app_id:
     publisher:
-og_image: # Open Graph/Twitter default site image
+og_image: images/favicon_data/android-icon-192x192.png # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -309,8 +309,8 @@ compress_html:
 page_gen-dirs: true
 
 page_gen:
-  - data: 'codes'
-    template: 'codesamples'
-    name: 'filename'
-    title: 'header'
-    dir: 'code_samples'
+    - data: "codes"
+      template: "codesamples"
+      name: "filename"
+      title: "header"
+      dir: "code_samples"
