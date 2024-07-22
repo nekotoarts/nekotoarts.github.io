@@ -272,6 +272,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll-sitemap
   kramdown-math-katex
   wdm (>= 0.1.0)
   webrick (~> 1.8)
