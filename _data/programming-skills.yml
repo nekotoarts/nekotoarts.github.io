@@ -1,0 +1,11 @@
+- name: C#
+  percentage: 90
+  color: csharp
+
+- name: Python
+  percentage: 99
+  color: python
+
+- name: GDScript
+  percentage: 100
+  color: godot

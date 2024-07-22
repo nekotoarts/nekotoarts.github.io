@@ -1,0 +1,11 @@
+- name: GLSL
+  percentage: 98
+  color: danger
+
+- name: HLSL
+  percentage: 95
+  color: success
+
+- name: Cg
+  percentage: 90
+  color: blue
