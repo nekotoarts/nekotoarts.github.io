@@ -1,19 +1,58 @@
 ---
-layout: null
+layout: default
 permalink: /streamsreg.html
 ---
 
-<title>When Streamsreg?</title>
-<meta content="Last known date of Streamsreg" property="og:title" />
-<meta
-	content="Last known broadcast: <t:1706904540:F> which was <t:1706904540:R>"
-	property="og:description"
-/>
-<meta content="https://twitch.tv/mohsregtv" property="og:url" />
-<meta
-	content="https://github.com/mohsreg/mohsreg.github.io/blob/main/images/icon/mohsregTV_Bot_PFP.png?raw=true"
-	property="og:image"
-/>
-<meta content="#003366" data-react-helmet="true" name="theme-color" />
+<head>
+	<title>When Streamsreg?</title>
+	<meta content="Last known date of Streamsreg" property="og:title" />
+	<meta
+		name="discord-desc"
+		content="Open to track the days since the death of Streamsreg. RIP Streamsreg."
+		property="og:description"
+	/>
+	<!-- <meta content="https://twitch.tv/mohsregtv" property="og:url" /> -->
+	<meta
+		content="https://github.com/mohsreg/mohsreg.github.io/blob/main/images/icon/mohsregTV_Bot_PFP.png?raw=true"
+		property="og:image"
+	/>
+	<meta content="#003366" data-react-helmet="true" name="theme-color" />
+	<script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+</head>
 
-Page is empty, this is meant to contain embed data for discord to bully mohsreg
+<div align="center">
+	<h1>Last known date of Streamsreg</h1>
+	<br />
+	Simpsreg last streamed <span id="time-long">on 4 billion BC</span> which was
+	<span id="time-since">4 billion years ago</span>
+	<!-- Death Bell Sound -->
+	<br /><br />
+	<audio id="death-sfx" src="/audio/undertaker_bell.mp3" controls></audio>
+	<br />
+	<img id="prayge-img" />
+</div>
+
+<script>
+	// 1706904540 is the epoch of the last stream
+	document.getElementById("time-since").innerHTML = moment
+		.unix(1706904540)
+		.fromNow();
+	document.getElementById("time-long").innerHTML = moment
+		.unix(1706904540)
+		.format("dddd, MMMM Do YYYY, h:mm:ss A UTCZ");
+</script>
+
+<script>
+	let vid = document.getElementById("death-sfx");
+	vid.onplay = function () {
+		var prayge_img = document.getElementById("prayge-img");
+		prayge_img.src = "/images/prayge.webp";
+		prayge_img.classList.add("fade-in");
+	};
+</script>
+
+<style>
+	.fade-in {
+		animation: fadeIn 4s;
+	}
+</style>
