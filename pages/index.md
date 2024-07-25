@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-<img src="/images/NekotoBranding/NekotoArts_HeadText_Simple.png" style="width:100%; height:auto;">
+<img src="/images/NekotoBranding/NekotoArts_YouTube_banner_draft3_darkmode_transparent.png" style="width:100%; height:auto;" id="youtube-banner">
 
 <style>
 .typewriter-container {
